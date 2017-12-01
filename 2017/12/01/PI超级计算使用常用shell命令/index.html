@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Enjoy Short Life</title>
+  <title>PI超级计算使用常用shell命令 | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Enjoy Short Life">
-<meta property="og:url" content="https://sunyasheng.github.io/archives/index.html">
+  <meta name="description" content="##SSH to remote supercomputer and input passwordssh -p [portnumber] [usrname]@[ipaddress] ##Use python in supercomputer ###Refer to python modulemodule load ~/p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PI超级计算使用常用shell命令">
+<meta property="og:url" content="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="##SSH to remote supercomputer and input passwordssh -p [portnumber] [usrname]@[ipaddress] ##Use python in supercomputer ###Refer to python modulemodule load ~/python27-gcc/bin/activate ###Use python e">
+<meta property="og:updated_time" content="2017-12-01T07:02:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Enjoy Short Life">
+<meta name="twitter:title" content="PI超级计算使用常用shell命令">
+<meta name="twitter:description" content="##SSH to remote supercomputer and input passwordssh -p [portnumber] [usrname]@[ipaddress] ##Use python in supercomputer ###Refer to python modulemodule load ~/python27-gcc/bin/activate ###Use python e">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -59,77 +63,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/01/PI超级计算使用常用shell命令/" class="archive-article-date">
-  <time datetime="2017-12-01T06:38:20.000Z" itemprop="datePublished">Dec 1</time>
+        <section id="main"><article id="post-PI超级计算使用常用shell命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/01/PI超级计算使用常用shell命令/" class="article-date">
+  <time datetime="2017-12-01T06:38:20.000Z" itemprop="datePublished">2017-12-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/01/PI超级计算使用常用shell命令/">PI超级计算使用常用shell命令</a>
+    <h1 class="article-title" itemprop="name">
+      PI超级计算使用常用shell命令
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/16/3D-Printing-Model-Repairing/" class="archive-article-date">
-  <time datetime="2017-11-16T12:37:49.000Z" itemprop="datePublished">Nov 16</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/16/3D-Printing-Model-Repairing/">3D Printing Model Repairing</a>
-    </h1>
-  
+        <p>##SSH to remote supercomputer and input password<br>ssh -p [portnumber] [usrname]@[ipaddress]</p>
+<p>##Use python in supercomputer</p>
+<p>###Refer to python module<br>module load ~/python27-gcc/bin/activate</p>
+<p>###Use python environment<br>source ~/python27-gcc/bin/activate</p>
+<p>##Transfer files between local computer and remote computer<br>scp [filepath in local computer] [usrname]@[ipaddress]:[filepath in remote computer]/</p>
+<p>##Run shell in supercomputer<br>sbatch [shell file]</p>
+<p>##Execute task<br>sbatch -p cpu [slurm file]</p>
+<p>##Cancel a task<br>scancel [jobnumber]</p>
+<p>##Show our task running on supercomputer<br>squeue -u <code>whoami</code></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/16/hello-world/" class="archive-article-date">
-  <time datetime="2017-11-16T12:07:59.000Z" itemprop="datePublished">Nov 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjankasq30000hus69vch0dgc" class="article-share-link">Partager</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/16/3D-Printing-Model-Repairing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">3D Printing Model Repairing</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
