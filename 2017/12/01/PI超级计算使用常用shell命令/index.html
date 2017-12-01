@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>PI超级计算使用常用shell命令 | Enjoy Short Life</title>
+  <title>Cheatsheet for Frequently Used Shell Commands | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SSH to remote supercomputer and input passwordssh -p [portnumber] [usrname]@[ipaddress] Use python in supercomputerRefer to python modulemodule load ~/python27-">
+  <meta name="description" content="Here are some frequently used shell commands when we run programs on remote supercomputer. SSH to remote supercomputer1ssh -p [portnumber] [usrname]@[ipaddress]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PI超级计算使用常用shell命令">
+<meta property="og:title" content="Cheatsheet for Frequently Used Shell Commands">
 <meta property="og:url" content="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
-<meta property="og:description" content="SSH to remote supercomputer and input passwordssh -p [portnumber] [usrname]@[ipaddress] Use python in supercomputerRefer to python modulemodule load ~/python27-gcc/bin/activate Use python environments">
-<meta property="og:updated_time" content="2017-12-01T07:09:03.000Z">
+<meta property="og:description" content="Here are some frequently used shell commands when we run programs on remote supercomputer. SSH to remote supercomputer1ssh -p [portnumber] [usrname]@[ipaddress] Use python in supercomputer Refer to py">
+<meta property="og:updated_time" content="2017-12-01T09:12:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PI超级计算使用常用shell命令">
-<meta name="twitter:description" content="SSH to remote supercomputer and input passwordssh -p [portnumber] [usrname]@[ipaddress] Use python in supercomputerRefer to python modulemodule load ~/python27-gcc/bin/activate Use python environments">
+<meta name="twitter:title" content="Cheatsheet for Frequently Used Shell Commands">
+<meta name="twitter:description" content="Here are some frequently used shell commands when we run programs on remote supercomputer. SSH to remote supercomputer1ssh -p [portnumber] [usrname]@[ipaddress] Use python in supercomputer Refer to py">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      PI超级计算使用常用shell命令
+      Cheatsheet for Frequently Used Shell Commands
     </h1>
   
 
@@ -85,19 +85,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="SSH-to-remote-supercomputer-and-input-password"><a href="#SSH-to-remote-supercomputer-and-input-password" class="headerlink" title="SSH to remote supercomputer and input password"></a>SSH to remote supercomputer and input password</h2><p>ssh -p [portnumber] [usrname]@[ipaddress]</p>
-<h2 id="Use-python-in-supercomputer"><a href="#Use-python-in-supercomputer" class="headerlink" title="Use python in supercomputer"></a>Use python in supercomputer</h2><h3 id="Refer-to-python-module"><a href="#Refer-to-python-module" class="headerlink" title="Refer to python module"></a>Refer to python module</h3><p>module load ~/python27-gcc/bin/activate</p>
-<h3 id="Use-python-environment"><a href="#Use-python-environment" class="headerlink" title="Use python environment"></a>Use python environment</h3><p>source ~/python27-gcc/bin/activate</p>
-<h2 id="Transfer-files-between-local-computer-and-remote-computer"><a href="#Transfer-files-between-local-computer-and-remote-computer" class="headerlink" title="Transfer files between local computer and remote computer"></a>Transfer files between local computer and remote computer</h2><p>scp [filepath in local computer] [usrname]@[ipaddress]:[filepath in remote computer]</p>
-<h2 id="Run-shell-in-supercomputer"><a href="#Run-shell-in-supercomputer" class="headerlink" title="Run shell in supercomputer"></a>Run shell in supercomputer</h2><p>sbatch [shell file]</p>
-<h2 id="Execute-task"><a href="#Execute-task" class="headerlink" title="Execute task"></a>Execute task</h2><p>sbatch -p cpu [slurm file]</p>
-<h2 id="Cancel-a-task"><a href="#Cancel-a-task" class="headerlink" title="Cancel a task"></a>Cancel a task</h2><p>scancel [jobnumber]</p>
-<h2 id="Show-our-task-running-on-supercomputer"><a href="#Show-our-task-running-on-supercomputer" class="headerlink" title="Show our task running on supercomputer"></a>Show our task running on supercomputer</h2><p>squeue -u <code>whoami</code></p>
-
+        <p>Here are some frequently used shell commands when we run programs on remote supercomputer.</p>
+<h3 id="SSH-to-remote-supercomputer"><a href="#SSH-to-remote-supercomputer" class="headerlink" title="SSH to remote supercomputer"></a>SSH to remote supercomputer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p [portnumber] [usrname]@[ipaddress]</span><br></pre></td></tr></table></figure>
+<h3 id="Use-python-in-supercomputer"><a href="#Use-python-in-supercomputer" class="headerlink" title="Use python in supercomputer"></a>Use python in supercomputer</h3><ul>
+<li><p>Refer to python module</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module load ~/python27-gcc/bin/activate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use python environment </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/python27-gcc/bin/activate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Transfer-files-between-local-computer-and-remote-computer"><a href="#Transfer-files-between-local-computer-and-remote-computer" class="headerlink" title="Transfer files between local computer and remote computer"></a>Transfer files between local computer and remote computer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [filepath in local computer] [usrname]@[ipaddress]:[filepath in remote computer]</span><br></pre></td></tr></table></figure>
+<h3 id="Run-shell-file-in-supercomputer"><a href="#Run-shell-file-in-supercomputer" class="headerlink" title="Run shell file in supercomputer"></a>Run shell file in supercomputer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbatch [shell file]</span><br></pre></td></tr></table></figure>
+<h3 id="Execute-a-task"><a href="#Execute-a-task" class="headerlink" title="Execute a task"></a>Execute a task</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbatch -p cpu [slurm file]</span><br></pre></td></tr></table></figure>
+<h3 id="Cancel-a-task"><a href="#Cancel-a-task" class="headerlink" title="Cancel a task"></a>Cancel a task</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scancel [jobnumber]</span><br></pre></td></tr></table></figure>
+<h3 id="Show-our-tasks-running-on-supercomputer"><a href="#Show-our-tasks-running-on-supercomputer" class="headerlink" title="Show our tasks running on supercomputer"></a>Show our tasks running on supercomputer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">squeue -u `whoami`</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjankj4nl0001k1s64ws5izuf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjanoygen0001x6s6eqaf2mts" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +152,7 @@
       <ul>
         
           <li>
-            <a href="/2017/12/01/PI超级计算使用常用shell命令/">PI超级计算使用常用shell命令</a>
+            <a href="/2017/12/01/PI超级计算使用常用shell命令/">Cheatsheet for Frequently Used Shell Commands</a>
           </li>
         
           <li>
