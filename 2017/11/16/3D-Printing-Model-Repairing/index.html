@@ -5,16 +5,16 @@
   
   <title>3D Printing Model Repairing | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Narrow Gap DetectionModel thickening">
+  <meta name="description" content="Introduction of Selective Laser Sintering in 3D printing3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3D Printing Model Repairing">
 <meta property="og:url" content="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
-<meta property="og:description" content="Narrow Gap DetectionModel thickening">
-<meta property="og:updated_time" content="2017-12-01T09:15:06.000Z">
+<meta property="og:description" content="Introduction of Selective Laser Sintering in 3D printing3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced to many layers with equal height betwee">
+<meta property="og:updated_time" content="2017-12-05T14:36:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3D Printing Model Repairing">
-<meta name="twitter:description" content="Narrow Gap DetectionModel thickening">
+<meta name="twitter:description" content="Introduction of Selective Laser Sintering in 3D printing3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced to many layers with equal height betwee">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
@@ -85,11 +85,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Narrow-Gap-Detection"><a href="#Narrow-Gap-Detection" class="headerlink" title="Narrow Gap Detection"></a>Narrow Gap Detection</h2><h2 id="Model-thickening"><a href="#Model-thickening" class="headerlink" title="Model thickening"></a>Model thickening</h2>
+        <h2 id="Introduction-of-Selective-Laser-Sintering-in-3D-printing"><a href="#Introduction-of-Selective-Laser-Sintering-in-3D-printing" class="headerlink" title="Introduction of Selective Laser Sintering in 3D printing"></a>Introduction of Selective Laser Sintering in 3D printing</h2><p>3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced to many layers with equal height between adjacent layers and it is fabricated layer by layer. As one main technology of 3D printing, Selective Laser Sintering(SLS) fuses powdered materials with high powered laser focused on the surface of model. Unfortunately, the model will be damaged by high power if walls are too thin to tolerate the heat generated as shown in Fig.1. Therefore, the model needs to be modified slightly to avoid being burned out during fabrication. </p>
+<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>The problem can be formulated to thicken all the thin walls to the required width such as 0.8 millimeters. As is shown in Fig.2, there are two kinds of contours in one layer, including outer contours and inner contours. Usually, outer contours are expected to be maintained to its orginal shape since change of outer contours will result in appearance change of the fabricated model. Therefore, our aim can be stated as shrinking the inner loop to ensure that walls meet the requirements.  </p>
+<h3 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h3><p>Here we propose an efficient and elegant strategy to enlarge the areas in danger. There are two main steps in our strategy, offseting and clipping. Firstly, we offset the outer boundary toward the inner region by 0.8 millimeters and clip all the inner contours intersecting with it. And then we offset the inner contours by 0.8 millimeters iteratively toward the inner region and clip all the inner contours intersecting with it. Finally, walls in this layer are guaranteed to be thinner then the required width after this two operations.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>Below is the code written in C++ using the Clipper Library which supplies us an easy way to execute bool operations between polygons in a 2 Dimensional plane.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Here we provide an efficient strategy to modify the model. However, this is surely not the optimal solution if we examine this strategy closely. For instance, both of two contours are ‘eaten’ by another contour in our strategy, which caused more material are used. Actually, we can draw a conclusion that there must be some way to offset both the contours less to meet the requirement. Therefore, a better solution to minimize the material adding is expected to explore in the future. </p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjatn8zh5000095s6i4hcua81" class="article-share-link">Partager</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjatqac880000eys653sgjvke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,7 +104,7 @@
 <nav id="article-nav">
   
     <a href="/2017/12/01/PI超级计算使用常用shell命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           Cheatsheet for Frequently Used Shell Commands
@@ -109,7 +114,7 @@
   
   
     <a href="/2017/11/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -142,7 +147,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -179,7 +184,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Yasheng Sun<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
