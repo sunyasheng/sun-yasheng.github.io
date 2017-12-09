@@ -86,12 +86,15 @@
         <p>Sometimes we are required to cover line segments with grids. Here, I will introduce a simple trick to build the grids elegantly. The whole precedure can be divied into two steps as is shown below.</p>
 <h3 id="Clip-a-Line-Segment-with-Grid"><a href="#Clip-a-Line-Segment-with-Grid" class="headerlink" title="Clip a Line Segment with Grid"></a>Clip a Line Segment with Grid</h3><p>Below is the code for clipping a line segment with grids. The idea is pretty straigtfoward. A line can be described by the formula in Fig. 1 parameterized by t. So We can represent a cuting point by t when we cut a line segment with the boundary of grids. The procedure in code consists of three steps. Firstly, we cut a line with the boundaries of grids parallel to x axis and insert the t to a set. And similarly, we cut a line with the boundaries of grids parallel to y axis and also insert the t to a set. Finally, we compute the coordinates of the clipping points according to Fig.1 and put them to a vector. </p>
 <p><img src="content/images/2017/12/line_representation.jpeg" alt="Fig.1. Parameter description of a line" style="width: 150px;"><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">double</span>&gt; t;</span><br><span class="line">t.insert(<span class="number">0</span>);t.insert(<span class="number">1</span>);<span class="comment">//insert start point and end point of a line segment</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = min(x1, x2)/GRID_LENGTH); i &lt; max(x1, x2)/GRID_LENGTH; i++)&#123;<span class="comment">//clip a line segment with boundary of grids</span></span><br><span class="line">	<span class="keyword">if</span>(!(x1=&lt;i*GRID_LENGTH&amp;&amp;i*GRID_LENGTH&lt;x2))<span class="keyword">continue</span>;</span><br><span class="line">	t.insert((i*GRID_LENGTH)/(x2-x1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = min(y1, y2)/GRID_LENGTH); j &lt; max(y1, y2)/GRID_LENGTH; j++)&#123;<span class="comment">//clip a line segment with boundary of grids</span></span><br><span class="line">	<span class="keyword">if</span>(!(y1=&lt;j*GRID_LENGTH&amp;&amp;i*GRID_LENGTH&lt;y2))<span class="keyword">continue</span>;</span><br><span class="line">	t.insert((j*GRID_LENGTH)/(y2-y1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">double</span>&gt;::iterator it; <span class="keyword">double</span> last_it;</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">double</span>,<span class="keyword">double</span>&gt; &gt; segment_points;</span><br><span class="line"><span class="keyword">for</span>(it = t.begin(); it != t.end(); it++)&#123;<span class="comment">//insert clipping points to a vector</span></span><br><span class="line">	<span class="keyword">if</span>(it!=t.begin()&amp;&amp;<span class="built_in">abs</span>(*it-last_it)&lt;eps)<span class="keyword">continue</span>;</span><br><span class="line">	last_it = *it;</span><br><span class="line">	segment_points.push_back(make_pair(x1+*it*(x2-x1), y1+*it*(y2-y1)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Put-Line-Segment-to-its-Corresponding-Grid"><a href="#Put-Line-Segment-to-its-Corresponding-Grid" class="headerlink" title="Put Line Segment to its Corresponding Grid"></a>Put Line Segment to its Corresponding Grid</h3><p>After line segment clipping, the endpoints of a line is guaranteed to be lied in the grid. Without loss of generality, we represent a grid with its lower left corner coordinate. Therefore, we could quickly determine which grid current line is located at through the midpoint of this line. </p>
+<h3 id="Put-Line-Segment-to-Its-Corresponding-Grid"><a href="#Put-Line-Segment-to-Its-Corresponding-Grid" class="headerlink" title="Put Line Segment to Its Corresponding Grid"></a>Put Line Segment to Its Corresponding Grid</h3><p>After line segment clipping, the endpoints of a line is guaranteed to be lied in the grid. Without loss of generality, we represent a grid with its lower left corner coordinate. Therefore, we could quickly determine which grid the current line is located at by its midpoint.</p>
+<pre><code class="C"><span class="built_in">set</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt;grids;
+grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>, midpoint_y/GRID_LENGTH - midpoint_y&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>))
+</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjay6pg7z0002mys6nojzrrji" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjaytzuls00021os6e46mjceg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjay6pg7s0000mys6q05ng5br" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjaytzull00001os628ugcc03" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjay6pg830005mys6ylw4k6uk" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjaytzulx00051os6rbpgx78c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjay6pg810003mys6y33nufmm" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjaytzulu00031os6cqz9fwhj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjay6pg820004mys6q90b5q3w" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjaytzulv00041os6lklhu7bs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjay6pg7x0001mys6zmq3ahmk" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjaytzulq00011os6agshmahx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -361,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjay6pg850006mys6vwwgrwl8" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjaytzuly00061os6m1l3hs0x" class="article-share-link">Share</a>
       
       
     </footer>
