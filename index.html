@@ -88,13 +88,13 @@
 <p><img src="content/images/2017/12/line_representation.jpeg" alt="Fig.1. Parameter description of a line" style="width: 150px;"><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">double</span>&gt; t;</span><br><span class="line">t.insert(<span class="number">0</span>);t.insert(<span class="number">1</span>);<span class="comment">//insert start point and end point of a line segment</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = min(x1, x2)/GRID_LENGTH); i &lt; max(x1, x2)/GRID_LENGTH; i++)&#123;<span class="comment">//clip a line segment with boundary of grids</span></span><br><span class="line">	<span class="keyword">if</span>(!(x1=&lt;i*GRID_LENGTH&amp;&amp;i*GRID_LENGTH&lt;x2))<span class="keyword">continue</span>;</span><br><span class="line">	t.insert((i*GRID_LENGTH)/(x2-x1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = min(y1, y2)/GRID_LENGTH); j &lt; max(y1, y2)/GRID_LENGTH; j++)&#123;<span class="comment">//clip a line segment with boundary of grids</span></span><br><span class="line">	<span class="keyword">if</span>(!(y1=&lt;j*GRID_LENGTH&amp;&amp;i*GRID_LENGTH&lt;y2))<span class="keyword">continue</span>;</span><br><span class="line">	t.insert((j*GRID_LENGTH)/(y2-y1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">double</span>&gt;::iterator it; <span class="keyword">double</span> last_it;</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">double</span>,<span class="keyword">double</span>&gt; &gt; segment_points;</span><br><span class="line"><span class="keyword">for</span>(it = t.begin(); it != t.end(); it++)&#123;<span class="comment">//insert clipping points to a vector</span></span><br><span class="line">	<span class="keyword">if</span>(it!=t.begin()&amp;&amp;<span class="built_in">abs</span>(*it-last_it)&lt;eps)<span class="keyword">continue</span>;</span><br><span class="line">	last_it = *it;</span><br><span class="line">	segment_points.push_back(make_pair(x1+*it*(x2-x1), y1+*it*(y2-y1)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Put-Line-Segment-to-Its-Corresponding-Grid"><a href="#Put-Line-Segment-to-Its-Corresponding-Grid" class="headerlink" title="Put Line Segment to Its Corresponding Grid"></a>Put Line Segment to Its Corresponding Grid</h3><p>After line segment clipping, the endpoints of a line is guaranteed to be lied in the grid. Without loss of generality, we represent a grid with its lower left corner coordinate. Therefore, we could quickly determine which grid the current line is located at by its midpoint.</p>
 <pre><code class="C"><span class="built_in">set</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt;grids;
-grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>, midpoint_y/GRID_LENGTH - midpoint_y&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>))
+grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) - midpoint_x&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>, <span class="keyword">int</span>(midpoint_y/GRID_LENGTH) - midpoint_y&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>))
 </code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjayu1e9p000135s6nvbnjegv" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjaz6e9fl00024rs6ey5ev61q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -131,7 +131,7 @@ grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="numbe
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjayu1e9j000035s6f4inq2u6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjaz6e9fd00004rs6g8w854om" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +174,7 @@ grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="numbe
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjayu1ea0000635s6sf5elvxh" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjaz6e9fq00054rs6mfzl05e7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +227,7 @@ grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="numbe
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjayu1e9y000435s68c9wz6wj" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjaz6e9fm00034rs6uphyx4a4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +277,7 @@ grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="numbe
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjayu1e9w000335s6sypg7erg" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjaz6e9fo00044rs6zlkvf9r9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +319,7 @@ grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="numbe
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjayu1e9u000235s6u5otc6d0" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjaz6e9fi00014rs6iddaphs6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,7 +364,7 @@ grids.insert(make_pair(midpoint_x/GRID_LENGTH - midpoint_x&lt;<span class="numbe
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjayu1e9z000535s6joaum9ga" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjaz6e9fs00064rs6yrpcjl92" class="article-share-link">Share</a>
       
       
     </footer>
