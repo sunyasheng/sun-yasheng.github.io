@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Deep Q Neural Network and Policy Gradient | Enjoy Short Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Q Neural Network and Policy Gradient">
+<meta property="og:url" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/index.html">
+<meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others’ experience. The core idea of Q learnin">
+<meta property="og:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/content/images/2017/12/Q-learning.png">
+<meta property="og:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/content/images/2017/12/Policy%20Gradient.png">
+<meta property="og:updated_time" content="2017-12-11T02:11:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep Q Neural Network and Policy Gradient">
+<meta name="twitter:description" content="Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others’ experience. The core idea of Q learnin">
+<meta name="twitter:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/content/images/2017/12/Q-learning.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Enjoy Short Life</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Deep-Q-Neural-Network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/10/Deep-Q-Neural-Network/" class="article-date">
+  <time datetime="2017-12-10T01:25:08.000Z" itemprop="datePublished">2017-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Deep Q Neural Network and Policy Gradient
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others’ experience. The core idea of Q learning also reinforcement learning is learning from (state, action, reward). This process simulating a kid exploring the world and gradually know in which way to obtain highest reward. </p>
+<h3 id="Q-Learning"><a href="#Q-Learning" class="headerlink" title="Q Learning"></a>Q Learning</h3><p>To be brief, our aim is to determine an optimal action given a specified state. In Q learning, the action which have highest value is selected as its decision at this state. Therefore, the problem is transform to obtain a Q table whose column index is action and row index is state storing the value Q(s, a) of action in a specified state. When we make a decision if we are in state s, we go through all the value in the row recording state s and choose the action with the maximum value.<br>Below is the procedure of Q learning to learn a Q table.</p>
+<p><img src="content/images/2017/12/Q-learning.png" alt="Fig.1. Q learning" style="width: 600px;"></p>
+<h3 id="Deep-Q-Neural-Network"><a href="#Deep-Q-Neural-Network" class="headerlink" title="Deep Q Neural Network"></a>Deep Q Neural Network</h3><p>Learning Q table is impractical when state space is huge. Hence, the neural network is introduced to replace the Q table. Two traditional NN are built to do this job. In first one, input state s and action a to NN and its value is computed. In second one, input state and the values of all actions in this state is computed and outputted. Actually, there is no essential difference between these two representations. The output of the neural network stands for a voting of an action.<br>Furthermore, two techniques, experience replay and fixed Q-targets, make deep Q neural network powerful.</p>
+<h4 id="Experience-Replay"><a href="#Experience-Replay" class="headerlink" title="Experience Replay"></a>Experience Replay</h4><p>Experience replay is a common technique used to improve the efficiency. Instead of training the network using current data, experience replay also train the network using its previous experience.</p>
+<h4 id="Fixed-Q-targets"><a href="#Fixed-Q-targets" class="headerlink" title="Fixed Q-targets"></a>Fixed Q-targets</h4><p>There two networks in fixed Q-targets, old network with parameters a few times ago to give estimation of Q and new network with newest parameters to give reality of Q. </p>
+<h3 id="Policy-Gradient"><a href="#Policy-Gradient" class="headerlink" title="Policy Gradient"></a>Policy Gradient</h3><p>In Policy Gradient, the output of NN is action. An advantage of this strategy is that it is powerful when action is a continuous value. DQN can only tackle the situation where action is a discrete value because the output of DQN is the value of a specific action. Since only value of this specific action is backpropagated, the action is fixed and can only indicates discrete value such as turning left or right. However, the action is an continuous output directly from neural network while the reward is used as an coefficient to affect backpropagation. In this sense, action is usually can be interpreted with a continuous value such as velocity or temperature. The procedure of policy gradient is shown below.</p>
+<p><img src="content/images/2017/12/Policy Gradient.png" alt="Fig.2. Policy Gradient" style="width: 500px;"></p>
+<h4 id="Training-data-for-policy-gradient"><a href="#Training-data-for-policy-gradient" class="headerlink" title="Training data for policy gradient"></a>Training data for policy gradient</h4><p>The training data for policy gradient is a series of (s, a, r), indicating (state, action, reward) in one episode. The s is for the input and The a indicates output. The reward is only an coefficient to influence backpropagation.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjb044mxq0001jus64ye3kom8" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">An Elegant Way to Cover Line Segments with Grids</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/10/Deep-Q-Neural-Network/">Deep Q Neural Network and Policy Gradient</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/">An Elegant Way to Cover Line Segments with Grids</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/">3-Dimensional Reconstruction from 2-Dimensional Slicing</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/05/Particle-Swarm-Optimization/">Particle Swarm Optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/">Experience in Tian Chi Big Data Competetion</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Yasheng Sun<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

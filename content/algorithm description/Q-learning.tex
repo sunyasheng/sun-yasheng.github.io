@@ -1,0 +1,15 @@
+\documentclass{article}
+\begin{document}
+
+\begin{flushleft}
+Initialize $Q(s,a)$ arbitrarily\\
+Repeat (for each episode):\\
+\quad Initialize $s$\\
+\quad Repeat (for each step of episode):\\
+\quad \quad Choose $a$ from $s$ using policy derived from $Q$ ($e.g.\quad \varepsilon-greed$)\\
+\quad \quad Take action $a$, observe $r, s'$\\
+\quad \quad 	$Q(s,a) = Q(s,a) + \alpha[r + \gamma*max_{a'}Q(s', a') - Q(s,a)]$\\
+\quad \quad $s = s'$\\
+\quad \quad Until $s$ is terminal
+\end{flushleft}
+\end{document}

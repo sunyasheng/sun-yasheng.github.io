@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="Introduction of Selective Laser Sintering in 3D printing3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced to many layers with equal height betwee">
 <meta property="og:image" content="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/content/images/2017/12/contour.jpeg">
-<meta property="og:updated_time" content="2017-12-06T02:36:38.000Z">
+<meta property="og:updated_time" content="2017-12-10T15:56:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3D Printing Model Repairing">
 <meta name="twitter:description" content="Introduction of Selective Laser Sintering in 3D printing3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced to many layers with equal height betwee">
@@ -54,9 +54,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
@@ -88,7 +88,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Introduction-of-Selective-Laser-Sintering-in-3D-printing"><a href="#Introduction-of-Selective-Laser-Sintering-in-3D-printing" class="headerlink" title="Introduction of Selective Laser Sintering in 3D printing"></a>Introduction of Selective Laser Sintering in 3D printing</h2><p>3D printing is an efficient additive manufacturing technology. The digital 3-dimensional model is sliced to many layers with equal height between adjacent layers and it is fabricated layer by layer. As one main technology of 3D printing, Selective Laser Sintering(SLS) fuses powdered materials with high powered laser focused on the surface of model. Unfortunately, the model will be damaged by high power if walls are too thin to tolerate the heat generated as shown in Fig.1. Therefore, the model needs to be modified slightly to avoid being burned out during fabrication. </p>
-<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>The problem can be formulated to thicken all the thin walls to the required width such as 0.8 millimeters. As is shown in Fig.1, there are two kinds of contours in one layer, including outer contours and inner contours. Usually, outer contours are expected to be maintained to its orginal shape since change of outer contours will result in appearance change of the fabricated model. Therefore, our aim can be stated as shrinking the inner loop to ensure that walls meet the requirements.  </p>
+<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>The problem can be formulated to thicken all the thin walls to the required width such as 0.8 millimeters. As is shown in Fig.1, there are two kinds of contours in one layer, including outer contours and inner contours. Usually, outer contours are expected to be maintained to its orginal shape since change of outer contours will result in appearance change of the fabricated model. Therefore, our aim can be stated as shrinking the inner loop to ensure that walls meet the requirements.</p>
 <h3 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h3><p>Here we propose an efficient and elegant strategy to enlarge the areas in danger. There are two main steps in our strategy, offseting and clipping. Firstly, we offset the outer boundary toward the inner region by 0.8 millimeters and clip all the inner contours intersecting with it. And then we offset the inner contours by 0.8 millimeters iteratively toward the inner region and clip all the inner contours intersecting with it. Finally, walls in this layer are guaranteed to be thinner then the required width after this two operations.</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>Below is the code written in C++ using the Clipper Library which supplies us an easy way to execute bool operations between polygons in a 2 Dimensional plane.<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> RenderingWidget::ModelThicken(<span class="built_in">std</span>::<span class="built_in">vector</span> &lt; <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cutLine&gt;* &gt;* tc, <span class="keyword">int</span> numlayer) &#123;</span><br><span class="line"><span class="comment">/* if (mycutthicken == NULL)mycutthicken = new std::vector&lt;std::vector&lt;cutLine&gt;*&gt;[mycut-&gt;GetNumPieces()];*/</span></span><br><span class="line"> <span class="keyword">if</span> (tc == <span class="literal">NULL</span>)<span class="keyword">return</span> FALSE;</span><br><span class="line"> ClipperLib::Paths contours, res;</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">size_t</span> j = <span class="number">0</span>; j &lt; tc[numlayer].size(); j++) &#123;</span><br><span class="line">	 ClipperLib::Path p;</span><br><span class="line">	 <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; (tc[numlayer])[j]-&gt;size(); k++) &#123;</span><br><span class="line">		 ClipperLib::cInt x = ScaleNumber*((tc[numlayer])[j])-&gt;at(k).position_vert[<span class="number">0</span>].data()[<span class="number">0</span>];</span><br><span class="line">		 ClipperLib::cInt y = ScaleNumber*((tc[numlayer])[j])-&gt;at(k).position_vert[<span class="number">0</span>].data()[<span class="number">1</span>];</span><br><span class="line">		 p &lt;&lt; IntPoint(x, y);</span><br><span class="line">	 &#125;</span><br><span class="line">	 contours.push_back(p);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//DrawPaths(contours);</span></span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i = contours.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">	 <span class="keyword">if</span> (Orientation(contours[i]) == FALSE) &#123;</span><br><span class="line">		 Clipper difference; Clipper intersection; Paths tmpsolution, solution;</span><br><span class="line">		 <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; contours.size(); j++)<span class="keyword">if</span> (j != i) &#123;</span><br><span class="line">			 <span class="keyword">if</span> (Orientation(contours[j]) == TRUE&amp;&amp;IsNestedIn(contours[i], contours[j])) &#123;</span><br><span class="line">				 ClipperOffset co; Paths solution;</span><br><span class="line">				 co.AddPath(contours[j], jtMiter, etClosedPolygon);</span><br><span class="line">				 co.Execute(solution, -ScaleNumber*MIN_DIS); CleanPolygons(solution);</span><br><span class="line">				 intersection.AddPaths(solution, ptClip, TRUE);</span><br><span class="line">				 <span class="comment">/*DrawPaths(solution);*/</span></span><br><span class="line">			 &#125;</span><br><span class="line">			 <span class="keyword">else</span> <span class="keyword">if</span> (Orientation(contours[j]) == FALSE) &#123;</span><br><span class="line">				 ClipperOffset co; Paths solution;</span><br><span class="line">				 co.AddPath(contours[j], jtMiter, etClosedPolygon);</span><br><span class="line">				 co.Execute(solution, ScaleNumber*MIN_DIS); CleanPolygons(solution);</span><br><span class="line">				 difference.AddPaths(solution, ptClip, TRUE);</span><br><span class="line">				 <span class="comment">/*DrawPaths(solution);*/</span></span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">		 intersection.AddPath(contours[i], ptSubject, TRUE);</span><br><span class="line">		 intersection.Execute(ctIntersection, tmpsolution, pftNonZero, pftNonZero);</span><br><span class="line">		 difference.AddPaths(tmpsolution, ptSubject, TRUE);</span><br><span class="line">		 difference.Execute(ctDifference, solution, pftNonZero, pftNonZero);</span><br><span class="line">		 <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; solution.size(); j++)res.push_back(solution[j]);</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">else</span> <span class="keyword">if</span> (Orientation(contours[i]) == TRUE) &#123;</span><br><span class="line">		 res.push_back(contours[i]);</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> DrawPaths(res, numlayer);</span><br><span class="line"> Contour2Layer(res, numlayer);</span><br><span class="line"> <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p><img src="content/images/2017/12/contour.jpeg" alt="Fig.1. Green lines stand for original contours while red lines indicate modified contours" style="width: 400px;"></p>
@@ -97,7 +97,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjaz6e9fi00014rs6iddaphs6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjb044mxt0002jus6yv5br5o8" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -107,7 +107,7 @@
 <nav id="article-nav">
   
     <a href="/2017/12/01/PI超级计算使用常用shell命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           Cheatsheet for Frequently Used Shell Commands
@@ -117,7 +117,7 @@
   
   
     <a href="/2017/11/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -150,9 +150,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/12/10/Deep-Q-Neural-Network/">Deep Q Neural Network and Policy Gradient</a>
+          </li>
         
           <li>
             <a href="/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/">An Elegant Way to Cover Line Segments with Grids</a>
@@ -170,10 +174,6 @@
             <a href="/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/">Experience in Tian Chi Big Data Competetion</a>
           </li>
         
-          <li>
-            <a href="/2017/12/01/PI超级计算使用常用shell命令/">Cheatsheet for Frequently Used Shell Commands</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -187,7 +187,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Yasheng Sun<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

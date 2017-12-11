@@ -1,0 +1,11 @@
+\documentclass{article}
+\begin{document}
+
+\begin{flushleft}
+Initialize $\theta$ arbitrarily\\
+\textbf{for} each episode $\lbrace s_{1},a_{1},r_{2},...,s_{T-1},a_{T-1},r_{T}\rbrace \sim  \pi_{\theta}$ \textbf{do}\\
+\quad \textbf{for} $t=1$ to $T-1$ \textbf{do}\\
+\quad \quad $\theta = \theta + \alpha\bigtriangledown_{\theta}log\pi_{\theta}(s_{t},a_{t})v_{t} $\\
+\quad \textbf{end for}\\
+\textbf{end for}
+\end{document}
