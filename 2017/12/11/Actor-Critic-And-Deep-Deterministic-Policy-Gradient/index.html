@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>3-Dimensional Reconstruction from 2-Dimensional Slicing | Enjoy Short Life</title>
+  <title>Actor Critic and Deep Deterministic Policy Gradient | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Introduction of Marching Cubes AlgorithmReferenceHafizah, M., Tan, K., &amp;amp; Spriyanto, E. (2010). 3D ultrasound image reconstruction based on VTK.">
+  <meta name="description" content="There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Acto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3-Dimensional Reconstruction from 2-Dimensional Slicing">
-<meta property="og:url" content="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/index.html">
+<meta property="og:title" content="Actor Critic and Deep Deterministic Policy Gradient">
+<meta property="og:url" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
-<meta property="og:description" content="Introduction of Marching Cubes AlgorithmReferenceHafizah, M., Tan, K., &amp;amp; Spriyanto, E. (2010). 3D ultrasound image reconstruction based on VTK.">
-<meta property="og:updated_time" content="2017-12-06T06:46:21.000Z">
+<meta property="og:description" content="There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Actor-Critic. However, it may be difficult f">
+<meta property="og:image" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/content/images/2017/12/DQN_PG_Comparation.jpeg">
+<meta property="og:updated_time" content="2017-12-11T03:51:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3-Dimensional Reconstruction from 2-Dimensional Slicing">
-<meta name="twitter:description" content="Introduction of Marching Cubes AlgorithmReferenceHafizah, M., Tan, K., &amp;amp; Spriyanto, E. (2010). 3D ultrasound image reconstruction based on VTK.">
+<meta name="twitter:title" content="Actor Critic and Deep Deterministic Policy Gradient">
+<meta name="twitter:description" content="There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Actor-Critic. However, it may be difficult f">
+<meta name="twitter:image" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/content/images/2017/12/DQN_PG_Comparation.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -63,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-3-Dimensional-Reconstruction-from-2-Dimensional-Slicing" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Actor-Critic-And-Deep-Deterministic-Policy-Gradient" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" class="article-date">
-  <time datetime="2017-12-06T05:54:48.000Z" itemprop="datePublished">2017-12-06</time>
+    <a href="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" class="article-date">
+  <time datetime="2017-12-11T02:32:52.000Z" itemprop="datePublished">2017-12-11</time>
 </a>
     
   </div>
@@ -77,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      3-Dimensional Reconstruction from 2-Dimensional Slicing
+      Actor Critic and Deep Deterministic Policy Gradient
     </h1>
   
 
@@ -85,12 +87,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Introduction-of-Marching-Cubes-Algorithm"><a href="#Introduction-of-Marching-Cubes-Algorithm" class="headerlink" title="Introduction of Marching Cubes Algorithm"></a>Introduction of Marching Cubes Algorithm</h3><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Hafizah, M., Tan, K., &amp; Spriyanto, E. (2010). 3D ultrasound image reconstruction based on VTK.</p>
-
+        <p>There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Actor-Critic. However, it may be difficult for Actor-Critic to learn something due to the complexity of its mechanism and its quick updating at every timestamp. Fortunately, Google Deep Mind proposes a elegant strategy, famous deep deterministic policy gradient(DDPG),to solve this problem. Here I will briefly compare DQN and Policy Gradient and introduce DDPG.</p>
+<h3 id="Comparsion-of-DQN-and-Policy-Gradient"><a href="#Comparsion-of-DQN-and-Policy-Gradient" class="headerlink" title="Comparsion of DQN and Policy Gradient"></a>Comparsion of DQN and Policy Gradient</h3><p>The difference of DQN and Policy Gradient is described in Fig. 1. Reward s is used to compute the output value v. In DQN, computing value v requires one time step but needs one episode to compute value v in Policy Grdient. This is why DQN update faster than Policy Gradient. But could we use the value v computed through DQN and update each iteration in Policy Gradient? Here comes the Actor Critic. Briefly, DQN functions like a critic who evaluate (state s, action a) with value v and Policy Gradient functions like a actor who takes action a in state s. Therefore, DQN can tell Policy Gradient the Value v at each step while Policy Gradient can tell DQN which action a is supposed to take at state s. Everything matches perfectly at this time.</p>
+<p><img src="content/images/2017/12/DQN_PG_Comparation.jpeg" alt="Fig.1. Comparasion of DQN and Policy" style="width: 600px;"></p>
+<h3 id="Actor-Critic-And-Deep-Deterministic-Policy-Gradient"><a href="#Actor-Critic-And-Deep-Deterministic-Policy-Gradient" class="headerlink" title="Actor Critic And Deep Deterministic Policy Gradient"></a>Actor Critic And Deep Deterministic Policy Gradient</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjb1nvb980000jxs6et228aje" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjb1nvb9h0002jxs6hhhg98p4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,19 +103,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          An Elegant Way to Cover Line Segments with Grids
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/05/Particle-Swarm-Optimization/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/12/10/Deep-Q-Neural-Network/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Particle Swarm Optimization</div>
+      <div class="article-nav-title">Deep Q Neural Network and Policy Gradient</div>
     </a>
   
 </nav>
