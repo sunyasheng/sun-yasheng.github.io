@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Fast Fourier transform | Enjoy Short Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="FFT(Fast Fourier transform) is first developed to speed the DFT(Discrete Fourier transform). Below is my matlab code. To be brief, it is similar to an divide an">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fast Fourier transform">
+<meta property="og:url" content="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/index.html">
+<meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="FFT(Fast Fourier transform) is first developed to speed the DFT(Discrete Fourier transform). Below is my matlab code. To be brief, it is similar to an divide and conquer algorithm. The complexity of F">
+<meta property="og:updated_time" content="2017-12-12T08:01:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fast Fourier transform">
+<meta name="twitter:description" content="FFT(Fast Fourier transform) is first developed to speed the DFT(Discrete Fourier transform). Below is my matlab code. To be brief, it is similar to an divide and conquer algorithm. The complexity of F">
+  
+    <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Enjoy Short Life</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Fast-Fourier-transform" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/12/Fast-Fourier-transform/" class="article-date">
+  <time datetime="2017-12-12T07:55:33.000Z" itemprop="datePublished">2017-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Fast Fourier transform
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FFT(Fast Fourier transform) is first developed to speed the DFT(Discrete Fourier transform). Below is my matlab code. To be brief, it is similar to an divide and conquer algorithm. The complexity of FFT is O(NlogN).<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[ X ]</span> = <span class="title">FFT</span><span class="params">( x, N )</span></span></span><br><span class="line">   wn = <span class="built_in">exp</span>(<span class="built_in">i</span>*<span class="number">2</span>*<span class="built_in">pi</span>/N);</span><br><span class="line">   X = <span class="number">0</span>:N<span class="number">-1</span>;</span><br><span class="line">   <span class="keyword">if</span>(N==<span class="number">1</span>)</span><br><span class="line">       X(<span class="number">1</span>)=x(<span class="number">1</span>);</span><br><span class="line">       <span class="keyword">return</span> ;</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line">   y0 = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span>; y1 = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">   <span class="keyword">for</span> k = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span></span><br><span class="line">       y0(k+<span class="number">1</span>) = x(k+<span class="number">1</span>) + x(k+<span class="number">1</span>+N/<span class="number">2</span>);</span><br><span class="line">       y1(k+<span class="number">1</span>) = (x(k+<span class="number">1</span>) - x(k+<span class="number">1</span>+N/<span class="number">2</span>))*wn^(k);</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line">   Y0 = FFT(y0, N/<span class="number">2</span>); Y1 = FFT(y1, N/<span class="number">2</span>);</span><br><span class="line">   <span class="keyword">for</span> k = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span></span><br><span class="line">       X(<span class="number">2</span>*k+<span class="number">1</span>) = Y0(k+<span class="number">1</span>);</span><br><span class="line">       X(<span class="number">2</span>*k+<span class="number">1</span>+<span class="number">1</span>) = Y1(k+<span class="number">1</span>);</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjb3c8ptl0002m4s6soxetcx1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Actor Critic and Deep Deterministic Policy Gradient</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/12/Fast-Fourier-transform/">Fast Fourier transform</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/">Actor Critic and Deep Deterministic Policy Gradient</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/10/Deep-Q-Neural-Network/">Deep Q Neural Network and Policy Gradient</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/">An Elegant Way to Cover Line Segments with Grids</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/">3-Dimensional Reconstruction from 2-Dimensional Slicing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Yasheng Sun<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

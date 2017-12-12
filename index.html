@@ -61,6 +61,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Fast-Fourier-transform" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/12/Fast-Fourier-transform/" class="article-date">
+  <time datetime="2017-12-12T07:55:33.000Z" itemprop="datePublished">2017-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/12/Fast-Fourier-transform/">Fast Fourier transform</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FFT(Fast Fourier transform) is first developed to speed the DFT(Discrete Fourier transform). Below is my matlab code. To be brief, it is similar to an divide and conquer algorithm. The complexity of FFT is O(NlogN).<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[ X ]</span> = <span class="title">FFT</span><span class="params">( x, N )</span></span></span><br><span class="line">   wn = <span class="built_in">exp</span>(<span class="built_in">i</span>*<span class="number">2</span>*<span class="built_in">pi</span>/N);</span><br><span class="line">   X = <span class="number">0</span>:N<span class="number">-1</span>;</span><br><span class="line">   <span class="keyword">if</span>(N==<span class="number">1</span>)</span><br><span class="line">       X(<span class="number">1</span>)=x(<span class="number">1</span>);</span><br><span class="line">       <span class="keyword">return</span> ;</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line">   y0 = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span>; y1 = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">   <span class="keyword">for</span> k = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span></span><br><span class="line">       y0(k+<span class="number">1</span>) = x(k+<span class="number">1</span>) + x(k+<span class="number">1</span>+N/<span class="number">2</span>);</span><br><span class="line">       y1(k+<span class="number">1</span>) = (x(k+<span class="number">1</span>) - x(k+<span class="number">1</span>+N/<span class="number">2</span>))*wn^(k);</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line">   Y0 = FFT(y0, N/<span class="number">2</span>); Y1 = FFT(y1, N/<span class="number">2</span>);</span><br><span class="line">   <span class="keyword">for</span> k = <span class="number">0</span>:N/<span class="number">2</span><span class="number">-1</span></span><br><span class="line">       X(<span class="number">2</span>*k+<span class="number">1</span>) = Y0(k+<span class="number">1</span>);</span><br><span class="line">       X(<span class="number">2</span>*k+<span class="number">1</span>+<span class="number">1</span>) = Y1(k+<span class="number">1</span>);</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjb3c8ptl0002m4s6soxetcx1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Actor-Critic-And-Deep-Deterministic-Policy-Gradient" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" class="article-date">
@@ -90,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjb1nvb9h0002jxs6hhhg98p4" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjb3c8pti0001m4s69jw9zx3u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjb1nvb9l0004jxs6jnr5ke5o" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjb3c8pto0004m4s6ahbw7ylh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +215,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjb1nvb9j0003jxs6mfbwgtri" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjb3c8ptp0005m4s6pnm2rfry" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +252,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjb1nvb980000jxs6et228aje" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjb3c8ptm0003m4s64b2wjrll" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +295,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjb1nvb9r0007jxs68xkxk60c" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjb3c8pts0007m4s6b4nks06x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +348,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjb1nvb9n0005jxs6gktd2aq3" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjb3c8ptu0008m4s6zl24fl5s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -361,7 +398,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjb1nvb9p0006jxs6vijn7zss" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjb3c8ptr0006m4s65wfmq2lf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,7 +440,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjb1nvb9e0001jxs6g20fz6ae" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjb3c8ptd0000m4s6o25x7z3p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -448,7 +485,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjb1nvb9z0008jxs6iznhbwlw" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjb3c8pv50009m4s63lw5qb07" class="article-share-link">Share</a>
       
       
     </footer>
@@ -488,6 +525,10 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       <ul>
         
           <li>
+            <a href="/2017/12/12/Fast-Fourier-transform/">Fast Fourier transform</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/">Actor Critic and Deep Deterministic Policy Gradient</a>
           </li>
         
@@ -501,10 +542,6 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
         
           <li>
             <a href="/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/">3-Dimensional Reconstruction from 2-Dimensional Slicing</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/05/Particle-Swarm-Optimization/">Particle Swarm Optimization</a>
           </li>
         
       </ul>
