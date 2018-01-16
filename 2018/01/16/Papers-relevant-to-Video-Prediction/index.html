@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Details of Neural Network | Enjoy Short Life</title>
+  <title>Papers relevant to Video Prediction | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="About the Batch NormalizationUsually, BN is cancelled in the last layer in semi-supervised learning.  EmbeddingsEmbedding is introduced to find a meaningful rep">
+  <meta name="description" content="Unsupervised Learning for Physical Interaction through Video Prediction Develop a predictive model which merges appearance infromation from previous frames with">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Details of Neural Network">
-<meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/index.html">
+<meta property="og:title" content="Papers relevant to Video Prediction">
+<meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
-<meta property="og:description" content="About the Batch NormalizationUsually, BN is cancelled in the last layer in semi-supervised learning.  EmbeddingsEmbedding is introduced to find a meaningful representation or encoding of vectors based">
-<meta property="og:updated_time" content="2018-01-16T05:15:54.000Z">
+<meta property="og:description" content="Unsupervised Learning for Physical Interaction through Video Prediction Develop a predictive model which merges appearance infromation from previous frames with motion predicted by the model. This pap">
+<meta property="og:updated_time" content="2018-01-16T05:27:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Details of Neural Network">
-<meta name="twitter:description" content="About the Batch NormalizationUsually, BN is cancelled in the last layer in semi-supervised learning.  EmbeddingsEmbedding is introduced to find a meaningful representation or encoding of vectors based">
+<meta name="twitter:title" content="Papers relevant to Video Prediction">
+<meta name="twitter:description" content="Unsupervised Learning for Physical Interaction through Video Prediction Develop a predictive model which merges appearance infromation from previous frames with motion predicted by the model. This pap">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Details-of-Neural-Network" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Papers-relevant-to-Video-Prediction" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/16/Details-of-Neural-Network/" class="article-date">
-  <time datetime="2018-01-16T05:00:06.000Z" itemprop="datePublished">2018-01-16</time>
+    <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/" class="article-date">
+  <time datetime="2018-01-16T05:17:24.000Z" itemprop="datePublished">2018-01-16</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Details of Neural Network
+      Papers relevant to Video Prediction
     </h1>
   
 
@@ -85,15 +85,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="About-the-Batch-Normalization"><a href="#About-the-Batch-Normalization" class="headerlink" title="About the Batch Normalization"></a>About the Batch Normalization</h2><p>Usually, BN is cancelled in the last layer in semi-supervised learning. </p>
-<h2 id="Embeddings"><a href="#Embeddings" class="headerlink" title="Embeddings"></a>Embeddings</h2><p>Embedding is introduced to find a meaningful representation or encoding of vectors based on the context information. The core idea is the embedding is affected by the final softmax probablity since the input of nn is a vector and the output of nn is those vectors near this vector. Note usually the number of negative samples are larger than the positive samples, so sampling part of negative outputs to speed up the trainning process is necessary.</p>
-<h2 id="CNN-LSTM"><a href="#CNN-LSTM" class="headerlink" title="CNN LSTM"></a>CNN LSTM</h2><p>Actually, CNN LSTM is a natural product when it comes to the video processing. CNN LSTM simply replaces the multiplication with convolution in LSTM. Remember that what LSTM does is just building  two items $c<em>{t}$ and $h</em>{t}$ to form four gates for the information control. This extension is pretty natural.</p>
-<h2 id="Spatial-Transformer-Networks"><a href="#Spatial-Transformer-Networks" class="headerlink" title="Spatial Transformer Networks"></a>Spatial Transformer Networks</h2><p>Give networks the ability to actively spatially transform feature maps, conditional on the featuremap</p>
-<h2 id="Laplacian-Pyramid-Reconstruction-and-Refinement-for-Semantic-Segmentation"><a href="#Laplacian-Pyramid-Reconstruction-and-Refinement-for-Semantic-Segmentation" class="headerlink" title="Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation"></a>Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation</h2>
+        <h2 id="Unsupervised-Learning-for-Physical-Interaction-through-Video-Prediction"><a href="#Unsupervised-Learning-for-Physical-Interaction-through-Video-Prediction" class="headerlink" title="Unsupervised Learning for Physical Interaction through Video Prediction"></a>Unsupervised Learning for Physical Interaction through Video Prediction</h2><ul>
+<li>Develop a predictive model which merges appearance infromation from previous frames with motion predicted by the model.</li>
+<li>This paper proposes three models, including DNA, CDNA and STP. </li>
+<li>The construction of this network is pretty classical.</li>
+</ul>
+<h2 id="Deep-Multi-Scale-Video-Prediction-Beyond-Mean-Square-Error"><a href="#Deep-Multi-Scale-Video-Prediction-Beyond-Mean-Square-Error" class="headerlink" title="Deep Multi-Scale Video Prediction Beyond Mean Square Error"></a>Deep Multi-Scale Video Prediction Beyond Mean Square Error</h2><ul>
+<li>Introduce a network to predict the difference between real $Y<em>{k}$ and $u(Y</em>{k-1})$ from $X<em>{k}$ and a coarse guess of $Y</em>{k}$</li>
+<li>Usually, “ Using $l<em>{2}$ loss, and to a lesser extent $l</em>{1}$, produces blurry predictions, increasingly worse when predicting further in the future. “</li>
+<li>“Convolutions only aacount for short-range dependencies, limited by the size of their kernels.” But pooling will lead to loss of resolution. There are two methods to tackle this problem. One is using many convolution layers without pooling and the other is “skip” connection to skip the pooling-unpooling pairs and preserve the high frequency information.</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjch75iaf00053bs6nyuqxdzr" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjch75iap000a3bs6w0fnysft" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +108,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Papers relevant to Video Prediction
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/16/Framework-of-Unsupervised-Learning/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/01/16/Details-of-Neural-Network/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Framework of Unsupervised Learning</div>
+      <div class="article-nav-title">Details of Neural Network</div>
     </a>
   
 </nav>
