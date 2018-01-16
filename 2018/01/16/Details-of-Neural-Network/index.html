@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Framework of Unsupervised Learning | Enjoy Short Life</title>
+  <title>Details of Neural Network | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Unsupervised Learning Data: Just Data, No Labels! Goal: Lean Some Underlying Hidden Structure of the Data Examples: Clustering, Dimensionality Reduction, Featur">
+  <meta name="description" content="About the Batch NormalizationUsually, BN is cancelled in the last layer in semi-supervised learning.  EmbeddingsEmbedding is introduced to find a meaningful rep">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Framework of Unsupervised Learning">
-<meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/index.html">
+<meta property="og:title" content="Details of Neural Network">
+<meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
-<meta property="og:description" content="Unsupervised Learning Data: Just Data, No Labels! Goal: Lean Some Underlying Hidden Structure of the Data Examples: Clustering, Dimensionality Reduction, Feature Learning, Density Estimation, etc.   C">
-<meta property="og:updated_time" content="2018-01-16T04:54:50.000Z">
+<meta property="og:description" content="About the Batch NormalizationUsually, BN is cancelled in the last layer in semi-supervised learning.  EmbeddingsEmbedding is introduced to find a meaningful representation or encoding of vectors based">
+<meta property="og:updated_time" content="2018-01-16T05:15:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Framework of Unsupervised Learning">
-<meta name="twitter:description" content="Unsupervised Learning Data: Just Data, No Labels! Goal: Lean Some Underlying Hidden Structure of the Data Examples: Clustering, Dimensionality Reduction, Feature Learning, Density Estimation, etc.   C">
+<meta name="twitter:title" content="Details of Neural Network">
+<meta name="twitter:description" content="About the Batch NormalizationUsually, BN is cancelled in the last layer in semi-supervised learning.  EmbeddingsEmbedding is introduced to find a meaningful representation or encoding of vectors based">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Framework-of-Unsupervised-Learning" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Details-of-Neural-Network" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/16/Framework-of-Unsupervised-Learning/" class="article-date">
-  <time datetime="2018-01-16T04:53:46.000Z" itemprop="datePublished">2018-01-16</time>
+    <a href="/2018/01/16/Details-of-Neural-Network/" class="article-date">
+  <time datetime="2018-01-16T05:00:06.000Z" itemprop="datePublished">2018-01-16</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Framework of Unsupervised Learning
+      Details of Neural Network
     </h1>
   
 
@@ -85,43 +85,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h2><ul>
-<li>Data: Just Data, No Labels!</li>
-<li>Goal: Lean Some Underlying Hidden Structure of the Data</li>
-<li>Examples: Clustering, Dimensionality Reduction, Feature Learning, Density Estimation, etc. </li>
-</ul>
-<h3 id="Common-Used-Approch"><a href="#Common-Used-Approch" class="headerlink" title="Common Used Approch"></a>Common Used Approch</h3><ul>
-<li>K-means</li>
-<li>PCA</li>
-<li>Antoencoder</li>
-<li>Density Estimation</li>
-</ul>
-<h3 id="Generative-Model"><a href="#Generative-Model" class="headerlink" title="Generative Model"></a>Generative Model</h3><h4 id="Explicitly-Learn-the-Probablity-Distribution-Basically-Tractable-Density-Function"><a href="#Explicitly-Learn-the-Probablity-Distribution-Basically-Tractable-Density-Function" class="headerlink" title="Explicitly Learn the Probablity Distribution, Basically Tractable Density Function"></a>Explicitly Learn the Probablity Distribution, Basically Tractable Density Function</h4><ul>
-<li>Pixel RNN</li>
-<li>Pixel CNN</li>
-<li>VAE （Variatinal Autoencoders）<ul>
-<li>Background: Autoencoder<ul>
-<li>Applications: Learn to Initialize a Supervised Model</li>
-</ul>
-</li>
-<li>Methodology<ul>
-<li>Encoder and Decoder is Defined to Be Probabilisic</li>
-<li>Variational Autoencoder Optimizes the Lower Bound of the Probablity</li>
-<li>Cons: Bluring</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="GAN——Give-up-on-Explicitly-Modeling-Density-and-Just-Want-Ability-to-Sample"><a href="#GAN——Give-up-on-Explicitly-Modeling-Density-and-Just-Want-Ability-to-Sample" class="headerlink" title="GAN——Give up on Explicitly Modeling Density, and Just Want Ability to Sample"></a>GAN——Give up on Explicitly Modeling Density, and Just Want Ability to Sample</h4><ul>
-<li>Learn to Generate from Training Distribution through 2-player Game</li>
-<li>Researching Area: Make Training Process of GAN Stable</li>
-</ul>
-
+        <h2 id="About-the-Batch-Normalization"><a href="#About-the-Batch-Normalization" class="headerlink" title="About the Batch Normalization"></a>About the Batch Normalization</h2><p>Usually, BN is cancelled in the last layer in semi-supervised learning. </p>
+<h2 id="Embeddings"><a href="#Embeddings" class="headerlink" title="Embeddings"></a>Embeddings</h2><p>Embedding is introduced to find a meaningful representation or encoding of vectors based on the context information. The core idea is the embedding is affected by the final softmax probablity since the input of nn is a vector and the output of nn is those vectors near this vector. Note usually the number of negative samples are larger than the positive samples, so sampling part of negative outputs to speed up the trainning process is necessary.</p>
+<h2 id="CNN-LSTM"><a href="#CNN-LSTM" class="headerlink" title="CNN LSTM"></a>CNN LSTM</h2><p>Actually, CNN LSTM is a natural product when it comes to the video processing. CNN LSTM simply replaces the multiplication with convolution in LSTM. Remember that what LSTM does is just building  two items $c<em>{t}$ and $h</em>{t}$ to form four gates for the information control. This extension is pretty natural.</p>
+<h2 id="Spatial-Transformer-Networks"><a href="#Spatial-Transformer-Networks" class="headerlink" title="Spatial Transformer Networks"></a>Spatial Transformer Networks</h2><p>Give networks the ability to actively spatially transform feature maps, conditional on the featuremap</p>
+<h2 id="Laplacian-Pyramid-Reconstruction-and-Refinement-for-Semantic-Segmentation"><a href="#Laplacian-Pyramid-Reconstruction-and-Refinement-for-Semantic-Segmentation" class="headerlink" title="Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation"></a>Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjch6qyml000725s6ifj6ieys" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjch6qymj000525s68pqd5zek" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,19 +102,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/16/Details-of-Neural-Network/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Details of Neural Network
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/16/Representation/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/01/16/Framework-of-Unsupervised-Learning/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Reading Notes of &#34;Toward Learning a Compositional Visual Representation&#34;</div>
+      <div class="article-nav-title">Framework of Unsupervised Learning</div>
     </a>
   
 </nav>
