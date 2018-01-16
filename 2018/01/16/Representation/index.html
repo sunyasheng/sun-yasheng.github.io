@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Reading Notes of &#34;Toward Learning a Compositional Visual Representation&#34; | Enjoy Short Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Naturally, knowledge representation is compositional. Can we make the most of compositionality to better predict or describe? State of ArtBuild hierarchical fea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reading Notes of &quot;Toward Learning a Compositional Visual Representation&quot;">
+<meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Representation/index.html">
+<meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="Naturally, knowledge representation is compositional. Can we make the most of compositionality to better predict or describe? State of ArtBuild hierarchical feature representation based on statistical">
+<meta property="og:image" content="https://www.vicarious.com/wp-content/uploads/2017/10/airplane_coffee.gif">
+<meta property="og:image" content="https://www.vicarious.com/wp-content/uploads/2017/10/compositionality3.png">
+<meta property="og:image" content="https://www.vicarious.com/wp-content/uploads/2017/10/image2017-7-20-20-18-15.png">
+<meta property="og:updated_time" content="2018-01-16T04:48:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reading Notes of &quot;Toward Learning a Compositional Visual Representation&quot;">
+<meta name="twitter:description" content="Naturally, knowledge representation is compositional. Can we make the most of compositionality to better predict or describe? State of ArtBuild hierarchical feature representation based on statistical">
+<meta name="twitter:image" content="https://www.vicarious.com/wp-content/uploads/2017/10/airplane_coffee.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Enjoy Short Life</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Representation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/16/Representation/" class="article-date">
+  <time datetime="2018-01-16T04:42:52.000Z" itemprop="datePublished">2018-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Reading Notes of &#34;Toward Learning a Compositional Visual Representation&#34;
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Naturally, knowledge representation is compositional. Can we make the most of compositionality to better predict or describe?</p>
+<h3 id="State-of-Art"><a href="#State-of-Art" class="headerlink" title="State of Art"></a>State of Art</h3><p>Build hierarchical feature representation based on statistical models.</p>
+<h3 id="Compostionality-in-CNN"><a href="#Compostionality-in-CNN" class="headerlink" title="Compostionality in CNN"></a>Compostionality in CNN</h3><ul>
+<li><p>CNN is powerful in extracting representations for various tasks, such as image segmentation and object detection. Can CNN learn to disentangle the natural parts that combine to make full images?</p>
+</li>
+<li><p>Expectation: CNN will have the same activation in the region of airliner regardless of what objects appear adjacent to the airliner.</p>
+</li>
+<li><p>Following the expectation, moving the coffee mug closer to the airliner should not shift activations in the region of the airliner.<br><img src="https://www.vicarious.com/wp-content/uploads/2017/10/airplane_coffee.gif" width="500"></p>
+</li>
+</ul>
+<h3 id="Teaching-Compositional-to-CNNs"><a href="#Teaching-Compositional-to-CNNs" class="headerlink" title="Teaching Compositional to CNNs"></a>Teaching Compositional to CNNs</h3><p>Two feature maps: one obtained from masking the input, and another derived from applying a mask in the feature space. Therefore, the compsitionality cost can be computed from the two feature maps and the projected mask. The whole framework is shown below.</p>
+<p><img src="https://www.vicarious.com/wp-content/uploads/2017/10/compositionality3.png" width="500"></p>
+<h3 id="Evaluate-the-Compositionality-of-CNN"><a href="#Evaluate-the-Compositionality-of-CNN" class="headerlink" title="Evaluate the Compositionality of CNN"></a>Evaluate the Compositionality of CNN</h3><p>Backtrace a classfication decision to a heat-map in the input image through a visualization technique like guided backpropogation. The heatmap shows what was the most important for the classifcation decision in the input image. This technique can classify an object without depending on irrelevant context.<br><img src="https://www.vicarious.com/wp-content/uploads/2017/10/image2017-7-20-20-18-15.png" width="800"></p>
+<h3 id="Core-Idea"><a href="#Core-Idea" class="headerlink" title="Core Idea"></a>Core Idea</h3><p>If you want to achieve something, just optimize it.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.vicarious.com/2017/10/20/toward-learning-a-compositional-visual-representation/" target="_blank" rel="noopener">https://www.vicarious.com/2017/10/20/toward-learning-a-compositional-visual-representation/</a></p>
+<p>Jost Tobias Springenberg, Alexey Dosovitskiy, Thomas Brox, and Martin Riedmiller. “Striving for simplicity: The all convolutional net.” International Conference on Learning Representations-WS. 2015.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjch5n64b0006xns6ilf65z8e" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/31/致新的一年/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">致新的一年</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/16/Representation/">Reading Notes of &#34;Toward Learning a Compositional Visual Representation&#34;</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/31/致新的一年/">致新的一年</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/12/Fast-Fourier-transform/">Fast Fourier transform</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/">Actor Critic and Deep Deterministic Policy Gradient</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/10/Deep-Q-Neural-Network/">Deep Q Neural Network and Policy Gradient</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Yasheng Sun<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
