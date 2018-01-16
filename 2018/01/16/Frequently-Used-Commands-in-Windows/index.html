@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Frequently Used Commands in Windows | Enjoy Short Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Check the using status of GPU12set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%nvidia-smi Use of Package Manager choco12choco search &amp;quot;package_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frequently Used Commands in Windows">
+<meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/index.html">
+<meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="Check the using status of GPU12set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%nvidia-smi Use of Package Manager choco12choco search &amp;quot;package_name&amp;quot;choco install &amp;quot;package_name&amp;q">
+<meta property="og:updated_time" content="2018-01-16T05:44:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Frequently Used Commands in Windows">
+<meta name="twitter:description" content="Check the using status of GPU12set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%nvidia-smi Use of Package Manager choco12choco search &amp;quot;package_name&amp;quot;choco install &amp;quot;package_name&amp;q">
+  
+    <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Enjoy Short Life</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Frequently-Used-Commands-in-Windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/16/Frequently-Used-Commands-in-Windows/" class="article-date">
+  <time datetime="2018-01-16T05:30:02.000Z" itemprop="datePublished">2018-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Frequently Used Commands in Windows
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Check the using status of GPU<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure></p>
+<p>Use of Package Manager choco<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">choco search &quot;package_name&quot;</span><br><span class="line">choco install &quot;package_name&quot;</span><br></pre></td></tr></table></figure></p>
+<p>pip intall with another source<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --pre mxnet-cu80 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
+<p>Check the package in python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pip</span><br><span class="line"><span class="keyword">for</span> pkg <span class="keyword">in</span> [<span class="string">'mxnet'</span>, <span class="string">'mxnet-cu75'</span>, <span class="string">'mxnet-cu80'</span>]:</span><br><span class="line">    pip.main([<span class="string">'show'</span>, pkg])</span><br></pre></td></tr></table></figure></p>
+<p>See the current directory and change to a new directory<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd() <span class="comment"># 查看当前工作目录</span></span><br><span class="line">os.chdir(<span class="string">"C:\\python36\\lib\\site-packages"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>See all the devices working in computer<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib <span class="keyword">as</span> _device_lib</span><br><span class="line">local_device_protos = _device_lib.list_local_devices()</span><br></pre></td></tr></table></figure></p>
+<p>See the current time<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">start = time.clock()</span><br><span class="line"><span class="comment"># start = time()</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjch7rmjo000948s6ulmhntuk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Papers relevant to Video Prediction</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/16/Frequently-Used-Commands-in-Windows/">Frequently Used Commands in Windows</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/">Papers relevant to Video Prediction</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/16/Details-of-Neural-Network/">Details of Neural Network</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/16/Framework-of-Unsupervised-Learning/">Framework of Unsupervised Learning</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/16/Representation/">Reading Notes of &#34;Toward Learning a Compositional Visual Representation&#34;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Yasheng Sun<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

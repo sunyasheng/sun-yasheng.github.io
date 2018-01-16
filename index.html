@@ -61,6 +61,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Frequently-Used-Commands-in-Windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/16/Frequently-Used-Commands-in-Windows/" class="article-date">
+  <time datetime="2018-01-16T05:30:02.000Z" itemprop="datePublished">2018-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/16/Frequently-Used-Commands-in-Windows/">Frequently Used Commands in Windows</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Check the using status of GPU<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure></p>
+<p>Use of Package Manager choco<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">choco search &quot;package_name&quot;</span><br><span class="line">choco install &quot;package_name&quot;</span><br></pre></td></tr></table></figure></p>
+<p>pip intall with another source<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --pre mxnet-cu80 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
+<p>Check the package in python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pip</span><br><span class="line"><span class="keyword">for</span> pkg <span class="keyword">in</span> [<span class="string">'mxnet'</span>, <span class="string">'mxnet-cu75'</span>, <span class="string">'mxnet-cu80'</span>]:</span><br><span class="line">    pip.main([<span class="string">'show'</span>, pkg])</span><br></pre></td></tr></table></figure></p>
+<p>See the current directory and change to a new directory<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd() <span class="comment"># 查看当前工作目录</span></span><br><span class="line">os.chdir(<span class="string">"C:\\python36\\lib\\site-packages"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>See all the devices working in computer<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib <span class="keyword">as</span> _device_lib</span><br><span class="line">local_device_protos = _device_lib.list_local_devices()</span><br></pre></td></tr></table></figure></p>
+<p>See the current time<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">start = time.clock()</span><br><span class="line"><span class="comment"># start = time()</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjch7rmjo000948s6ulmhntuk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Papers-relevant-to-Video-Prediction" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/" class="article-date">
@@ -97,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjch75iap000a3bs6w0fnysft" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjch7rmjr000b48s6uxiil5nl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjch75iaf00053bs6nyuqxdzr" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjch7rmjj000548s6cuxnhsmb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjch75ial00083bs6n0qgcajy" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjch7rmjn000848s63bimupof" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjch75iay000c3bs69nhj3eqm" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjch7rmjt000d48s6dc7nqar6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjch75ib0000e3bs6ssyqsjkr" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjch7rmjw000f48s66o07zru8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjch75iaj00073bs6ob1i4pyd" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjch7rmjm000748s65qqjnglv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjch75iab00023bs6f4is0zya" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjch7rmjf000248s69yacd6ti" class="article-share-link">Share</a>
       
       
     </footer>
@@ -427,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjch75iae00043bs6fd339q6m" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjch7rmjh000448s69r1r2g1i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,44 +513,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjch75iad00033bs6nk61z6sq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-3-Dimensional-Reconstruction-from-2-Dimensional-Slicing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" class="article-date">
-  <time datetime="2017-12-06T05:54:48.000Z" itemprop="datePublished">2017-12-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/">3-Dimensional Reconstruction from 2-Dimensional Slicing</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Introduction-of-Marching-Cubes-Algorithm"><a href="#Introduction-of-Marching-Cubes-Algorithm" class="headerlink" title="Introduction of Marching Cubes Algorithm"></a>Introduction of Marching Cubes Algorithm</h3><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Hafizah, M., Tan, K., &amp; Spriyanto, E. (2010). 3D ultrasound image reconstruction based on VTK.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjch75ia300003bs63tmujida" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjch7rmjg000348s60exk873f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -551,6 +557,10 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       <ul>
         
           <li>
+            <a href="/2018/01/16/Frequently-Used-Commands-in-Windows/">Frequently Used Commands in Windows</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/">Papers relevant to Video Prediction</a>
           </li>
         
@@ -564,10 +574,6 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
         
           <li>
             <a href="/2018/01/16/Representation/">Reading Notes of &#34;Toward Learning a Compositional Visual Representation&#34;</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/31/致新的一年/">致新的一年</a>
           </li>
         
       </ul>
