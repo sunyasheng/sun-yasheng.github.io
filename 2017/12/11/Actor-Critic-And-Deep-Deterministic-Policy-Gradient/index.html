@@ -11,12 +11,12 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Actor-Critic. However, it may be difficult f">
-<meta property="og:image" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/content/images/2017/12/DQN_PG_Comparation.jpeg">
+<meta property="og:image" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/images/2017/12/DQN_PG_Comparation.jpeg">
 <meta property="og:updated_time" content="2017-12-11T03:51:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Actor Critic and Deep Deterministic Policy Gradient">
 <meta name="twitter:description" content="There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Actor-Critic. However, it may be difficult f">
-<meta name="twitter:image" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/content/images/2017/12/DQN_PG_Comparation.jpeg">
+<meta name="twitter:image" content="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/images/2017/12/DQN_PG_Comparation.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -89,12 +89,12 @@
       
         <p>There is minor difference between Deep Q Neural Network(DQN) and Policy Gradient, could we combine these two algorithms? The answer is Yes. That is exactly Actor-Critic. However, it may be difficult for Actor-Critic to learn something due to the complexity of its mechanism and its quick updating at every timestamp. Fortunately, Google Deep Mind proposes a elegant strategy, famous deep deterministic policy gradient(DDPG),to solve this problem. Here I will briefly compare DQN and Policy Gradient and introduce DDPG.</p>
 <h3 id="Comparsion-of-DQN-and-Policy-Gradient"><a href="#Comparsion-of-DQN-and-Policy-Gradient" class="headerlink" title="Comparsion of DQN and Policy Gradient"></a>Comparsion of DQN and Policy Gradient</h3><p>The difference of DQN and Policy Gradient is described in Fig. 1. Reward s is used to compute the output value v. In DQN, computing value v requires one time step but needs one episode to compute value v in Policy Grdient. This is why DQN update faster than Policy Gradient. But could we use the value v computed through DQN and update each iteration in Policy Gradient? Here comes the Actor Critic. Briefly, DQN functions like a critic who evaluate (state s, action a) with value v and Policy Gradient functions like a actor who takes action a in state s. Therefore, DQN can tell Policy Gradient the Value v at each step while Policy Gradient can tell DQN which action a is supposed to take at state s. Everything matches perfectly at this time.</p>
-<p><img src="content/images/2017/12/DQN_PG_Comparation.jpeg" alt="Fig.1. Comparasion of DQN and Policy" style="width: 600px;"></p>
+<p><img src="/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/images/2017/12/DQN_PG_Comparation.jpeg" alt="Fig.1. Comparasion of DQN and Policy" style="width: 600px;"></p>
 <h3 id="Actor-Critic-And-Deep-Deterministic-Policy-Gradient"><a href="#Actor-Critic-And-Deep-Deterministic-Policy-Gradient" class="headerlink" title="Actor Critic And Deep Deterministic Policy Gradient"></a>Actor Critic And Deep Deterministic Policy Gradient</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjcn9nej30002z3s61cziu1ob" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjcn9q0z50002zus6b47dsgas" class="article-share-link">Share</a>
       
       
     </footer>

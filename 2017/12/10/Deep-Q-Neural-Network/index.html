@@ -11,13 +11,13 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others’ experience. The core idea of Q learnin">
-<meta property="og:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/content/images/2017/12/Q-learning.png">
-<meta property="og:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/content/images/2017/12/Policy%20Gradient.png">
+<meta property="og:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/images/2017/12/Q-learning.png">
+<meta property="og:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/images/2017/12/Policy%20Gradient.png">
 <meta property="og:updated_time" content="2017-12-11T02:11:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Q Neural Network and Policy Gradient">
 <meta name="twitter:description" content="Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others’ experience. The core idea of Q learnin">
-<meta name="twitter:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/content/images/2017/12/Q-learning.png">
+<meta name="twitter:image" content="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/images/2017/12/Q-learning.png">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -90,18 +90,18 @@
       
         <p>Q learning is offline policy learning, indicating that it is able to learn from previous experience usually stored in its memory library or to learn from others’ experience. The core idea of Q learning also reinforcement learning is learning from (state, action, reward). This process simulating a kid exploring the world and gradually know in which way to obtain highest reward. </p>
 <h3 id="Q-Learning"><a href="#Q-Learning" class="headerlink" title="Q Learning"></a>Q Learning</h3><p>To be brief, our aim is to determine an optimal action given a specified state. In Q learning, the action which have highest value is selected as its decision at this state. Therefore, the problem is transform to obtain a Q table whose column index is action and row index is state storing the value Q(s, a) of action in a specified state. When we make a decision if we are in state s, we go through all the value in the row recording state s and choose the action with the maximum value.<br>Below is the procedure of Q learning to learn a Q table.</p>
-<p><img src="content/images/2017/12/Q-learning.png" alt="Fig.1. Q learning" style="width: 600px;"></p>
+<p><img src="/2017/12/10/Deep-Q-Neural-Network/images/2017/12/Q-learning.png" alt="Fig.1. Q learning" style="width: 600px;"></p>
 <h3 id="Deep-Q-Neural-Network"><a href="#Deep-Q-Neural-Network" class="headerlink" title="Deep Q Neural Network"></a>Deep Q Neural Network</h3><p>Learning Q table is impractical when state space is huge. Hence, the neural network is introduced to replace the Q table. Two traditional NN are built to do this job. In first one, input state s and action a to NN and its value is computed. In second one, input state and the values of all actions in this state is computed and outputted. Actually, there is no essential difference between these two representations. The output of the neural network stands for a voting of an action.<br>Furthermore, two techniques, experience replay and fixed Q-targets, make deep Q neural network powerful.</p>
 <h4 id="Experience-Replay"><a href="#Experience-Replay" class="headerlink" title="Experience Replay"></a>Experience Replay</h4><p>Experience replay is a common technique used to improve the efficiency. Instead of training the network using current data, experience replay also train the network using its previous experience.</p>
 <h4 id="Fixed-Q-targets"><a href="#Fixed-Q-targets" class="headerlink" title="Fixed Q-targets"></a>Fixed Q-targets</h4><p>There two networks in fixed Q-targets, old network with parameters a few times ago to give estimation of Q and new network with newest parameters to give reality of Q. </p>
 <h3 id="Policy-Gradient"><a href="#Policy-Gradient" class="headerlink" title="Policy Gradient"></a>Policy Gradient</h3><p>In Policy Gradient, the output of NN is action. An advantage of this strategy is that it is powerful when action is a continuous value. DQN can only tackle the situation where action is a discrete value because the output of DQN is the value of a specific action. Since only value of this specific action is backpropagated, the action is fixed and can only indicates discrete value such as turning left or right. However, the action is an continuous output directly from neural network while the reward is used as an coefficient to affect backpropagation. In this sense, action is usually can be interpreted with a continuous value such as velocity or temperature. The procedure of policy gradient is shown below.</p>
-<p><img src="content/images/2017/12/Policy Gradient.png" alt="Fig.2. Policy Gradient" style="width: 500px;"></p>
+<p><img src="/2017/12/10/Deep-Q-Neural-Network/images/2017/12/Policy Gradient.png" alt="Fig.2. Policy Gradient" style="width: 500px;"></p>
 <h4 id="Training-data-for-policy-gradient"><a href="#Training-data-for-policy-gradient" class="headerlink" title="Training data for policy gradient"></a>Training data for policy gradient</h4><p>The training data for policy gradient is a series of (s, a, r), indicating (state, action, reward) in one episode. The s is for the input and The a indicates output. The reward is only an coefficient to influence backpropagation.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjcn9nej60004z3s6a9avj9i4" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjcn9q0z80004zus6inyn9yv4" class="article-share-link">Share</a>
       
       
     </footer>
