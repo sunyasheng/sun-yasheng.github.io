@@ -85,7 +85,7 @@
       
         <p>Check the using status of GPU<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure></p>
 <p>Use of Package Manager choco<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">choco search &quot;package_name&quot;</span><br><span class="line">choco install &quot;package_name&quot;</span><br></pre></td></tr></table></figure></p>
-<p>pip intall with another source<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --pre mxnet-cu80 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
+<p>pip install with another source<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --pre mxnet-cu80 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
 <p>Check the package in python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pip</span><br><span class="line"><span class="keyword">for</span> pkg <span class="keyword">in</span> [<span class="string">'mxnet'</span>, <span class="string">'mxnet-cu75'</span>, <span class="string">'mxnet-cu80'</span>]:</span><br><span class="line">    pip.main([<span class="string">'show'</span>, pkg])</span><br></pre></td></tr></table></figure></p>
 <p>See the current directory and change to a new directory<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd() <span class="comment"># 查看当前工作目录</span></span><br><span class="line">os.chdir(<span class="string">"C:\\python36\\lib\\site-packages"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>See all the devices working in computer<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib <span class="keyword">as</span> _device_lib</span><br><span class="line">local_device_protos = _device_lib.list_local_devices()</span><br></pre></td></tr></table></figure></p>
@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjcna84ew00092es6wvrm3qfv" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjco47j6m0008oos6jjojcx8a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,11 +136,31 @@
 <li>Usually, “ Using $l<em>{2}$ loss, and to a lesser extent $l</em>{1}$, produces blurry predictions, increasingly worse when predicting further in the future. “</li>
 <li>“Convolutions only aacount for short-range dependencies, limited by the size of their kernels.” But pooling will lead to loss of resolution. There are two methods to tackle this problem. One is using many convolution layers without pooling and the other is “skip” connection to skip the pooling-unpooling pairs and preserve the high frequency information.</li>
 </ul>
+<h2 id="Decomposing-Motion-and-Content-for-Natural-Video-Sequence-Prediction"><a href="#Decomposing-Motion-and-Content-for-Natural-Video-Sequence-Prediction" class="headerlink" title="Decomposing Motion and Content for Natural Video Sequence Prediction"></a>Decomposing Motion and Content for Natural Video Sequence Prediction</h2><p>This paper proposes MCNet in which the video is decomposed to motion and content part. Many latest technique is introduced in this model.<br>  <img src="content/images/2018/1/MCNet_Framework.png" alt="Fig.1. Forward Prediction" style="width: 800px;"> </p>
+<h2 id="Unsupervised-Learning-of-Disentangled-Representation-from-Video"><a href="#Unsupervised-Learning-of-Disentangled-Representation-from-Video" class="headerlink" title="Unsupervised Learning of Disentangled Representation from Video"></a>Unsupervised Learning of Disentangled Representation from Video</h2><p>This paper proposes a new model DRNET that learns disentangled image representations from video. This approch factorizes each frame into a stationary part and a temporally varying component. </p>
+<ul>
+<li><p>Basically, this framework extracts the content(stationary) and pose(dynamic) part explicitly.</p>
+</li>
+<li><p>The core idea is to explore an efficient way to represent content and pose respectively, which can be stated to train a encoder and decoder. </p>
+</li>
+<li><p>Generating future frames by recurrently predicting the pose vector $h_{p}$, as is shown below.</p>
+<p><img src="content/images/2018/1/forward_prediction.png" alt="Fig.1. Forward Prediction" style="width: 800px;"> </p>
+</li>
+<li><p>The adversarial loss is introduced to exploit the fact that the objects do not typically change within a video, but they do between different videos.</p>
+<p><img src="content/images/2018/1/samevideo.png" alt="Fig.1. Ensure Same Video" style="width: 600px;"> </p>
+</li>
+<li><p>Similarity loss, reconstruction loss and adversarial loss are introduce to train the pose encoder and content encoder.</p>
+<p><img src="content/images/2018/1/encoder_decoder.png" alt="Fig.1. Encoder and Decoder Loss" style="width: 600px;"> </p>
+</li>
+</ul>
+<h2 id="Unsupervised-Learning-of-Video-Representations-using-LSTMs"><a href="#Unsupervised-Learning-of-Video-Representations-using-LSTMs" class="headerlink" title="Unsupervised Learning of Video Representations using LSTMs"></a>Unsupervised Learning of Video Representations using LSTMs</h2><ul>
+<li>This paper gives us an intuition about LSTM antoencoder model.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjcna84ey000b2es6hk2guk1f" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjco47j6p000aoos6cfimletp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjcna84ep00052es6a4lyfetw" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjco47j6h0005oos6zfh9poq8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjcna84eu00082es6l65somp5" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjco47j6k0007oos6eml8qtkw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjcna84f1000d2es64iceequm" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjco47j6r000coos697v5k8ur" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjcna84f3000f2es6f0g0bh3x" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjco47j6t000doos6k9iwqsi2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjcna84et00072es6iq51m50g" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjco47j78000eoos63662df74" class="article-share-link">Share</a>
       
       
     </footer>
@@ -427,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjcna84eg00022es6kw0m0u6r" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjco47j6d0002oos6c8zp0f9w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -472,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjcna84en00042es6cywo613j" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjco47j6g0004oos67p4n6a4j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -515,7 +535,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjcna84eh00032es6yql8faiq" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjco47j6e0003oos6iggcv08x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,7 +577,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjcna84e500002es6aoj9ao7t" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjco47j640000oos6wd3lavi1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -600,7 +620,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjcna84f0000c2es65uva6k5e" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjco47j6q000boos6iivtkovg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -653,7 +673,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjcna84er00062es6pksdqpcp" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjco47j6j0006oos6ihpmzm4e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -703,7 +723,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjcna84ex000a2es6w5v725cr" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjco47j6o0009oos6xgh6nktl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -745,7 +765,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjcna84ed00012es6zj7uxwrj" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjco47j690001oos6m37effiz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -790,7 +810,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjcna84f2000e2es6al8ontt9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjco47j7j000foos69cc1l5rn" class="article-share-link">Share</a>
       
       
     </footer>

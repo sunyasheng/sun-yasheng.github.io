@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="Check the using status of GPU12set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%nvidia-smi Use of Package Manager choco12choco search &amp;quot;package_name&amp;quot;choco install &amp;quot;package_name&amp;q">
-<meta property="og:updated_time" content="2018-01-16T05:44:23.000Z">
+<meta property="og:updated_time" content="2018-01-21T01:49:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Frequently Used Commands in Windows">
 <meta name="twitter:description" content="Check the using status of GPU12set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%nvidia-smi Use of Package Manager choco12choco search &amp;quot;package_name&amp;quot;choco install &amp;quot;package_name&amp;q">
@@ -87,7 +87,7 @@
       
         <p>Check the using status of GPU<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set PATH=C:\Program Files\NVIDIA Corporation\NVSMI;%PATH%</span><br><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure></p>
 <p>Use of Package Manager choco<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">choco search &quot;package_name&quot;</span><br><span class="line">choco install &quot;package_name&quot;</span><br></pre></td></tr></table></figure></p>
-<p>pip intall with another source<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --pre mxnet-cu80 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
+<p>pip install with another source<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --pre mxnet-cu80 -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure></p>
 <p>Check the package in python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pip</span><br><span class="line"><span class="keyword">for</span> pkg <span class="keyword">in</span> [<span class="string">'mxnet'</span>, <span class="string">'mxnet-cu75'</span>, <span class="string">'mxnet-cu80'</span>]:</span><br><span class="line">    pip.main([<span class="string">'show'</span>, pkg])</span><br></pre></td></tr></table></figure></p>
 <p>See the current directory and change to a new directory<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd() <span class="comment"># 查看当前工作目录</span></span><br><span class="line">os.chdir(<span class="string">"C:\\python36\\lib\\site-packages"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>See all the devices working in computer<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib <span class="keyword">as</span> _device_lib</span><br><span class="line">local_device_protos = _device_lib.list_local_devices()</span><br></pre></td></tr></table></figure></p>
@@ -96,7 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjcna84ew00092es6wvrm3qfv" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjco47j6m0008oos6jjojcx8a" class="article-share-link">Share</a>
       
       
     </footer>

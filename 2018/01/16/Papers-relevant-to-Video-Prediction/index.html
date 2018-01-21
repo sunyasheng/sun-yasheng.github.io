@@ -11,10 +11,15 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="Unsupervised Learning for Physical Interaction through Video Prediction Develop a predictive model which merges appearance infromation from previous frames with motion predicted by the model. This pap">
-<meta property="og:updated_time" content="2018-01-16T05:31:47.000Z">
+<meta property="og:image" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/content/images/2018/1/MCNet_Framework.png">
+<meta property="og:image" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/content/images/2018/1/forward_prediction.png">
+<meta property="og:image" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/content/images/2018/1/samevideo.png">
+<meta property="og:image" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/content/images/2018/1/encoder_decoder.png">
+<meta property="og:updated_time" content="2018-01-21T02:26:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Papers relevant to Video Prediction">
 <meta name="twitter:description" content="Unsupervised Learning for Physical Interaction through Video Prediction Develop a predictive model which merges appearance infromation from previous frames with motion predicted by the model. This pap">
+<meta name="twitter:image" content="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/content/images/2018/1/MCNet_Framework.png">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -95,11 +100,31 @@
 <li>Usually, “ Using $l<em>{2}$ loss, and to a lesser extent $l</em>{1}$, produces blurry predictions, increasingly worse when predicting further in the future. “</li>
 <li>“Convolutions only aacount for short-range dependencies, limited by the size of their kernels.” But pooling will lead to loss of resolution. There are two methods to tackle this problem. One is using many convolution layers without pooling and the other is “skip” connection to skip the pooling-unpooling pairs and preserve the high frequency information.</li>
 </ul>
+<h2 id="Decomposing-Motion-and-Content-for-Natural-Video-Sequence-Prediction"><a href="#Decomposing-Motion-and-Content-for-Natural-Video-Sequence-Prediction" class="headerlink" title="Decomposing Motion and Content for Natural Video Sequence Prediction"></a>Decomposing Motion and Content for Natural Video Sequence Prediction</h2><p>This paper proposes MCNet in which the video is decomposed to motion and content part. Many latest technique is introduced in this model.<br>  <img src="content/images/2018/1/MCNet_Framework.png" alt="Fig.1. Forward Prediction" style="width: 800px;"> </p>
+<h2 id="Unsupervised-Learning-of-Disentangled-Representation-from-Video"><a href="#Unsupervised-Learning-of-Disentangled-Representation-from-Video" class="headerlink" title="Unsupervised Learning of Disentangled Representation from Video"></a>Unsupervised Learning of Disentangled Representation from Video</h2><p>This paper proposes a new model DRNET that learns disentangled image representations from video. This approch factorizes each frame into a stationary part and a temporally varying component. </p>
+<ul>
+<li><p>Basically, this framework extracts the content(stationary) and pose(dynamic) part explicitly.</p>
+</li>
+<li><p>The core idea is to explore an efficient way to represent content and pose respectively, which can be stated to train a encoder and decoder. </p>
+</li>
+<li><p>Generating future frames by recurrently predicting the pose vector $h_{p}$, as is shown below.</p>
+<p><img src="content/images/2018/1/forward_prediction.png" alt="Fig.1. Forward Prediction" style="width: 800px;"> </p>
+</li>
+<li><p>The adversarial loss is introduced to exploit the fact that the objects do not typically change within a video, but they do between different videos.</p>
+<p><img src="content/images/2018/1/samevideo.png" alt="Fig.1. Ensure Same Video" style="width: 600px;"> </p>
+</li>
+<li><p>Similarity loss, reconstruction loss and adversarial loss are introduce to train the pose encoder and content encoder.</p>
+<p><img src="content/images/2018/1/encoder_decoder.png" alt="Fig.1. Encoder and Decoder Loss" style="width: 600px;"> </p>
+</li>
+</ul>
+<h2 id="Unsupervised-Learning-of-Video-Representations-using-LSTMs"><a href="#Unsupervised-Learning-of-Video-Representations-using-LSTMs" class="headerlink" title="Unsupervised Learning of Video Representations using LSTMs"></a>Unsupervised Learning of Video Representations using LSTMs</h2><ul>
+<li>This paper gives us an intuition about LSTM antoencoder model.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjcna84ey000b2es6hk2guk1f" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjco47j6p000aoos6cfimletp" class="article-share-link">Share</a>
       
       
     </footer>
