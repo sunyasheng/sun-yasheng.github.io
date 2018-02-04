@@ -83,12 +83,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Download-through-python3"><a href="#Download-through-python3" class="headerlink" title="Download through python3"></a>Download through python3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">base_url = &quot;http://ilab.usc.edu/neo2/dataset/tower/training/Neovision2-Training-Tower-&quot;</span><br><span class="line">def download(base_url):</span><br><span class="line">    for i in range(1,51):</span><br><span class="line">        url = base_url + &quot;%03d&quot;%i + &apos;.csv&apos;</span><br><span class="line">        with request.urlopen(url) as web:</span><br><span class="line">            with open(&quot;Neovision2-Training-Tower-&quot;+&quot;%03d&quot;%i + &apos;.csv&apos;, &apos;wb&apos;) as outfile:</span><br><span class="line">                outfile.write(web.read())</span><br></pre></td></tr></table></figure>
+        <h2 id="Download-through-python3"><a href="#Download-through-python3" class="headerlink" title="Download through python3"></a>Download through python3</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">base_url = <span class="string">"http://ilab.usc.edu/neo2/dataset/tower/training/Neovision2-Training-Tower-"</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download</span><span class="params">(base_url)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">51</span>):</span><br><span class="line">        url = base_url + <span class="string">"%03d"</span>%i + <span class="string">'.csv'</span></span><br><span class="line">        <span class="keyword">with</span> request.urlopen(url) <span class="keyword">as</span> web:</span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">"Neovision2-Training-Tower-"</span>+<span class="string">"%03d"</span>%i + <span class="string">'.csv'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> outfile:</span><br><span class="line">                outfile.write(web.read())</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjd87l5yq000763s6xj64lhr9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjd87mfyw000a7bs6emekj2b0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -131,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjd87l5yt000863s6d4hedsft" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjd87mfyu00097bs6a2mrldc1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjd87l60r000g63s6n7sq7chp" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjd87mfyy000c7bs6vt2o3f39" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjd87l5yl000363s6yhco99fc" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjd87mfyl00047bs6spq2js2k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjd87l5yv000963s6upnafydw" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjd87mfyt00087bs6i4utcf6h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjd87l5z0000d63s6r6ag2k0s" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjd87mfyz000d7bs6pdctgyjc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjd87l5z1000e63s6doknwehw" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjd87mfz3000g7bs6mev1kk0w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -445,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjd87l5yo000563s6gj1znr9b" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjd87mfyp00067bs66tk2re2w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -484,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjd87l5ym000463s63lwelkjc" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjd87mfyi00027bs61wu8basn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -529,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjd87l5yk000263s6pxachwpt" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjd87mfyn00057bs6g7hjhmic" class="article-share-link">Share</a>
       
       
     </footer>
@@ -572,7 +572,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjd87l5yx000b63s6ckyp0ru0" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjd87mfyk00037bs6ynbgfcuu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -614,7 +614,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjd87l5xc000063s6esqzkulu" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjd87mfyb00007bs693x0x5nn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -657,7 +657,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjd87l5yz000c63s6xas46dv7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjd87mfz0000e7bs6dpas4ywn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -710,7 +710,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjd87l5yp000663s6sw881sak" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjd87mfyr00077bs6if5619m8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -760,7 +760,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjd87l5yw000a63s6hxicg7bo" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjd87mfyx000b7bs6ws2u5xnn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -802,7 +802,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjd87l5yi000163s6ic1dlnmm" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjd87mfyg00017bs6buot36v9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -847,7 +847,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjd87l60g000f63s6vm0xtvob" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjd87mfz2000f7bs65m4fbt0a" class="article-share-link">Share</a>
       
       
     </footer>
