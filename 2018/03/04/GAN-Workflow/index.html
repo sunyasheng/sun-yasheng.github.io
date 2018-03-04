@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2018/2 | Enjoy Short Life</title>
+  <title>GAN Workflow | Enjoy Short Life</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Enjoy Short Life">
-<meta property="og:url" content="https://sunyasheng.github.io/archives/2018/02/index.html">
+  <meta name="description" content="GAN WorkflowThe whole workflow of GAN including data processing, model constructing and other details is recorded here based on https://github.com/soumith/dcgan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GAN Workflow">
+<meta property="og:url" content="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="GAN WorkflowThe whole workflow of GAN including data processing, model constructing and other details is recorded here based on https://github.com/soumith/dcgan.torch. Here we take the LSUN(Large-Scal">
+<meta property="og:updated_time" content="2018-03-04T12:13:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Enjoy Short Life">
+<meta name="twitter:title" content="GAN Workflow">
+<meta name="twitter:description" content="GAN WorkflowThe whole workflow of GAN including data processing, model constructing and other details is recorded here based on https://github.com/soumith/dcgan.torch. Here we take the LSUN(Large-Scal">
   
     <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
   
@@ -59,58 +63,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" class="archive-article-date">
-  <time datetime="2018-02-04T04:15:15.000Z" itemprop="datePublished">Feb 4</time>
+        <section id="main"><article id="post-GAN-Workflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/04/GAN-Workflow/" class="article-date">
+  <time datetime="2018-03-04T12:12:16.000Z" itemprop="datePublished">2018-03-04</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/04/Introduction-of-Pascal-VOC-Dataset/">Introduction of Pascal VOC Dataset</a>
+    <h1 class="article-title" itemprop="name">
+      GAN Workflow
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/02/04/Frequently-Used-Script/" class="archive-article-date">
-  <time datetime="2018-02-04T03:07:48.000Z" itemprop="datePublished">Feb 4</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/04/Frequently-Used-Script/">Frequently Used Script</a>
-    </h1>
-  
+        <h2 id="GAN-Workflow"><a href="#GAN-Workflow" class="headerlink" title="GAN Workflow"></a>GAN Workflow</h2><p>The whole workflow of GAN including data processing, model constructing and other details is recorded here based on <a href="https://github.com/soumith/dcgan.torch" target="_blank" rel="noopener">https://github.com/soumith/dcgan.torch</a>. Here we take the LSUN(Large-Scale Scene Understanding Challenge) as an example.</p>
+<ol>
+<li>Download the dataset through this script <a href="https://github.com/fyu/lsun/blob/master/download.py" target="_blank" rel="noopener">https://github.com/fyu/lsun/blob/master/download.py</a>. The dataset is stored as a lmdb(Lightning Memory-Mapped Database) database file. Lmdb database(folder named of <u>bedroom_train_lmdb</u>) contains <u>data.mdb</u> and <u>lock.mdb</u>.</li>
+<li>Generate an index file to record all the keys in lmdb database. <u>bedroom_train_lmdb_hashes_chartensor.t7</u></li>
+<li>Achieve the data:get_batches() function. This work is finished through the cooperation of two files <u>data.lua</u> and <u>donkey_lsun.lua</u>. In <u>data.lua</u>, multi threads are built to speed the data-reading. In <u>donkey_lsun.lua</u>, data reading from lmdb database and image cropping behaviors are defined. </li>
+<li>Model building and training is achieved in <u>main.lua</u>. Pretrained model is stored in <u>checkpoints/train_netG.t7</u> and <u>checkspoints/train_netD.t7</u>.</li>
+<li>Generate new samples using <u>generate.lua</u>. Vector Arithmetic is implemented in <u>arithmetic.lua</u>.</li>
+</ol>
+<p>Note that if the training images are not database files, step 2 and 3 will is suppose d to be replaced with the code in <u>donkey_folder.lua</u> and <u>dataset.lua</u>.</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjecrd5m30008srs6f7dog1hu" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Introduction of Pascal VOC Dataset</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

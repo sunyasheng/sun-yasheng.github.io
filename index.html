@@ -61,6 +61,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-GAN-Workflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/04/GAN-Workflow/" class="article-date">
+  <time datetime="2018-03-04T12:12:16.000Z" itemprop="datePublished">2018-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/04/GAN-Workflow/">GAN Workflow</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="GAN-Workflow"><a href="#GAN-Workflow" class="headerlink" title="GAN Workflow"></a>GAN Workflow</h2><p>The whole workflow of GAN including data processing, model constructing and other details is recorded here based on <a href="https://github.com/soumith/dcgan.torch" target="_blank" rel="noopener">https://github.com/soumith/dcgan.torch</a>. Here we take the LSUN(Large-Scale Scene Understanding Challenge) as an example.</p>
+<ol>
+<li>Download the dataset through this script <a href="https://github.com/fyu/lsun/blob/master/download.py" target="_blank" rel="noopener">https://github.com/fyu/lsun/blob/master/download.py</a>. The dataset is stored as a lmdb(Lightning Memory-Mapped Database) database file. Lmdb database(folder named of <u>bedroom_train_lmdb</u>) contains <u>data.mdb</u> and <u>lock.mdb</u>.</li>
+<li>Generate an index file to record all the keys in lmdb database. <u>bedroom_train_lmdb_hashes_chartensor.t7</u></li>
+<li>Achieve the data:get_batches() function. This work is finished through the cooperation of two files <u>data.lua</u> and <u>donkey_lsun.lua</u>. In <u>data.lua</u>, multi threads are built to speed the data-reading. In <u>donkey_lsun.lua</u>, data reading from lmdb database and image cropping behaviors are defined. </li>
+<li>Model building and training is achieved in <u>main.lua</u>. Pretrained model is stored in <u>checkpoints/train_netG.t7</u> and <u>checkspoints/train_netD.t7</u>.</li>
+<li>Generate new samples using <u>generate.lua</u>. Vector Arithmetic is implemented in <u>arithmetic.lua</u>.</li>
+</ol>
+<p>Note that if the training images are not database files, step 2 and 3 will is suppose d to be replaced with the code in <u>donkey_folder.lua</u> and <u>dataset.lua</u>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjecrd5m30008srs6f7dog1hu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Introduction-of-Pascal-VOC-Dataset" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" class="article-date">
@@ -92,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjd8f0wbv0008d0s6z7zb8bbq" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjecrd5m7000bsrs6bnp5b84a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjd8f0wc1000dd0s6ksvrlk3m" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjecrd5ma000dsrs6ddm48z7m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjd8f0wbt0007d0s6jahxnq8p" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjecrd5m10007srs60xrphgbo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjd8f0wbx000ad0s6dxzjpyf9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjecrd5m9000csrs61kp2kz97" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjd8f0wbn0003d0s6kma9pj2i" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjecrd5lv0004srs6by7phnza" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjd8f0wbw0009d0s6rgbrpin1" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjecrd5lz0006srs64zsttl40" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjd8f0wc3000fd0s6oei6wmqm" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjecrd5o6000isrs6jag3afil" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjd8f0wc4000gd0s6l10mikpq" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjecrd5o5000hsrs68frmh7dl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjd8f0wbr0006d0s6iq3u3l4k" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjecrd5lx0005srs6uczyrk3t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -525,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjd8f0wbf0000d0s69x5hxeod" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjecrd5lq0001srs6jobyzxmk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -570,7 +615,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjd8f0wbm0002d0s63n7kw6kw" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjecrd5lu0003srs6rnfmtmqj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -613,7 +658,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjd8f0wby000bd0s6dg8pc5e9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjecrd5m6000asrs675m163rz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -655,7 +700,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjd8f0wbp0004d0s6rnkor8ke" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjecrd5lt0002srs6le2rd9bb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -698,7 +743,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjd8f0wc2000ed0s6fw6wghnp" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjecrd5ms000gsrs6juijnmij" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,7 +796,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjd8f0wbq0005d0s6vy7gsmu5" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjecrd5m40009srs6aaameg5b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -801,7 +846,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjd8f0wbz000cd0s6fzrd1m1d" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjecrd5mc000esrs61ktwag9t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -843,7 +888,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjd8f0wbj0001d0s6bs15jri9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjecrd5lm0000srs6trhqc5d3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -888,7 +933,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjd8f0wc6000hd0s61minr2ru" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjecrd5me000fsrs6o5cj35ar" class="article-share-link">Share</a>
       
       
     </footer>
@@ -915,7 +960,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
   </div>
 
@@ -926,6 +971,10 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/03/04/GAN-Workflow/">GAN Workflow</a>
+          </li>
         
           <li>
             <a href="/2018/02/04/Introduction-of-Pascal-VOC-Dataset/">Introduction of Pascal VOC Dataset</a>
@@ -941,10 +990,6 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
         
           <li>
             <a href="/2018/01/16/Papers-relevant-to-Video-Prediction/">Papers relevant to Video Prediction</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/16/Details-of-Neural-Network/">Details of Deep Learning</a>
           </li>
         
       </ul>
