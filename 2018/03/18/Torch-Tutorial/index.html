@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Torch_Tutorial | Enjoy Short Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Define Your Own Module123456789101112131415161718192021222324252627282930313233343536373839-- 使用自己定义的module，参考 http://blog.csdn.net/happyer88/article/details/52">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Torch_Tutorial">
+<meta property="og:url" content="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/index.html">
+<meta property="og:site_name" content="Enjoy Short Life">
+<meta property="og:description" content="Define Your Own Module123456789101112131415161718192021222324252627282930313233343536373839-- 使用自己定义的module，参考 http://blog.csdn.net/happyer88/article/details/52884586-- 自定义dropout的写法，参考torch官方文档 http:">
+<meta property="og:updated_time" content="2018-03-18T15:18:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Torch_Tutorial">
+<meta name="twitter:description" content="Define Your Own Module123456789101112131415161718192021222324252627282930313233343536373839-- 使用自己定义的module，参考 http://blog.csdn.net/happyer88/article/details/52884586-- 自定义dropout的写法，参考torch官方文档 http:">
+  
+    <link rel="alternate" href="/atom.xml" title="Enjoy Short Life" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Enjoy Short Life</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Torch-Tutorial" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/18/Torch-Tutorial/" class="article-date">
+  <time datetime="2018-03-18T15:17:21.000Z" itemprop="datePublished">2018-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Torch_Tutorial
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Define-Your-Own-Module"><a href="#Define-Your-Own-Module" class="headerlink" title="Define Your Own Module"></a>Define Your Own Module</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用自己定义的module，参考 http://blog.csdn.net/happyer88/article/details/52884586</span></span><br><span class="line"><span class="comment">-- 自定义dropout的写法，参考torch官方文档 http://torch.ch/docs/developer-docs.html#_</span></span><br><span class="line"><span class="built_in">require</span> <span class="string">'nn'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> NewClass, Parent = torch.class(<span class="string">'nn.NewClass'</span>, <span class="string">'nn.Module'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NewClass:__init</span><span class="params">()</span></span></span><br><span class="line">   Parent.__init(self)</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NewClass:updateOutput</span><span class="params">(input)</span></span></span><br><span class="line">    self.<span class="built_in">output</span>:resizeAs(<span class="built_in">input</span>):copy(<span class="built_in">input</span>)</span><br><span class="line">    <span class="keyword">return</span> self.<span class="built_in">output</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NewClass:updateGradInput</span><span class="params">(input, gradOutput)</span></span></span><br><span class="line">    self.gradInput:resizeAs(gradOutput):copy(gradOutput)</span><br><span class="line">    <span class="keyword">return</span> self.gradInput</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- parameters</span></span><br><span class="line"><span class="keyword">local</span> precision = <span class="number">1e-5</span></span><br><span class="line"><span class="keyword">local</span> jac = nn.Jacobian</span><br><span class="line"></span><br><span class="line"><span class="comment">-- define inputs and module</span></span><br><span class="line"><span class="keyword">local</span> ini = <span class="built_in">math</span>.<span class="built_in">random</span>(<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line"><span class="keyword">local</span> percentage = <span class="number">0.5</span></span><br><span class="line"><span class="keyword">local</span> <span class="built_in">input</span> = torch.Tensor(ini):zero()</span><br><span class="line"><span class="keyword">local</span> module = nn.NewClass()</span><br><span class="line"></span><br><span class="line"><span class="comment">-- test backprop, with Jacobian</span></span><br><span class="line"><span class="keyword">local</span> err = jac.testJacobian(module,<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'==&gt; error: '</span> .. err)</span><br><span class="line"><span class="keyword">if</span> err&lt;precision <span class="keyword">then</span></span><br><span class="line">   <span class="built_in">print</span>(<span class="string">'==&gt; module OK'</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'==&gt; error too large, incorrect implementation'</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="Simple-Test-Demo"><a href="#Simple-Test-Demo" class="headerlink" title="Simple Test Demo"></a>Simple Test Demo</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span> <span class="string">'nn'</span>;</span><br><span class="line"><span class="keyword">local</span> matio = <span class="built_in">require</span> <span class="string">'matio'</span></span><br><span class="line"><span class="comment">-- Model Construction</span></span><br><span class="line">nhidden = <span class="number">20</span></span><br><span class="line">ninput = <span class="number">310</span></span><br><span class="line">noutput = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">net = nn.Sequential()</span><br><span class="line">net:add(nn.Linear(ninput, nhidden))</span><br><span class="line">net:add(nn.Linear(nhidden, noutput))</span><br><span class="line"></span><br><span class="line">criterion = nn.CrossEntropyCriterion()</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Data Preparation</span></span><br><span class="line">train_input = matio.<span class="built_in">load</span>(<span class="string">'hw1/train_test/train_data.mat'</span>)</span><br><span class="line">train_label = matio.<span class="built_in">load</span>(<span class="string">'hw1/train_test/train_label.mat'</span>)</span><br><span class="line">test_input = matio.<span class="built_in">load</span>(<span class="string">'hw1/train_test/test_data.mat'</span>)</span><br><span class="line">test_label = matio.<span class="built_in">load</span>(<span class="string">'hw1/train_test/test_label.mat'</span>)</span><br><span class="line">train_label.train_label = train_label.train_label + <span class="number">2</span></span><br><span class="line">test_label.test_label = test_label.test_label + <span class="number">2</span></span><br><span class="line"></span><br><span class="line">trainset = &#123;&#125;</span><br><span class="line">trainset.data = train_input.train_data</span><br><span class="line">trainset.label = train_label.train_label</span><br><span class="line"><span class="built_in">setmetatable</span>(trainset, </span><br><span class="line">    &#123;<span class="built_in">__index</span> = <span class="function"><span class="keyword">function</span><span class="params">(t, i)</span></span> </span><br><span class="line">                    <span class="keyword">return</span> &#123;t.data[i], t.label[i]&#125; </span><br><span class="line">                <span class="keyword">end</span>&#125;</span><br><span class="line">);</span><br><span class="line">trainset.data = trainset.data:double() <span class="comment">-- convert the data from a ByteTensor to a DoubleTensor.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trainset:size</span><span class="params">()</span></span> </span><br><span class="line">    <span class="keyword">return</span> self.data:size(<span class="number">1</span>) </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- train feature normalization</span></span><br><span class="line">mean = &#123;&#125;</span><br><span class="line">stdv = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>,trainset.data:size(<span class="number">2</span>) <span class="keyword">do</span></span><br><span class="line">    mean[i] = trainset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:mean()</span><br><span class="line"><span class="comment">--     print('mean of feature' .. i .. ':'.. mean[i])</span></span><br><span class="line">    trainset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:add(-mean[i])</span><br><span class="line">    </span><br><span class="line">    stdv[i] = trainset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:std()</span><br><span class="line"><span class="comment">--     print('deviation of feature' .. i .. ':' .. stdv[i])</span></span><br><span class="line">    trainset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:div(stdv[i])</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">-- training settings</span></span><br><span class="line">trainer = nn.StochasticGradient(net, criterion)</span><br><span class="line">trainer.learningRate = <span class="number">0.005</span></span><br><span class="line">trainer.maxIteration = <span class="number">10</span> <span class="comment">-- just do 10 epochs of training.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- training</span></span><br><span class="line">trainer:train(trainset)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- evaluation of model</span></span><br><span class="line">testset = &#123;&#125;</span><br><span class="line">testset.data = test_input.test_data</span><br><span class="line">testset.label = test_label.test_label</span><br><span class="line"><span class="built_in">setmetatable</span>(testset, </span><br><span class="line">    &#123;<span class="built_in">__index</span> = <span class="function"><span class="keyword">function</span><span class="params">(t, i)</span></span> </span><br><span class="line">                    <span class="keyword">return</span> &#123;t.data[i], t.label[i]&#125; </span><br><span class="line">                <span class="keyword">end</span>&#125;</span><br><span class="line">);</span><br><span class="line">testset.data = testset.data:double() <span class="comment">-- convert the data from a ByteTensor to a DoubleTensor.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testset:size</span><span class="params">()</span></span> </span><br><span class="line">    <span class="keyword">return</span> self.data:size(<span class="number">1</span>) </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- test feature normalization</span></span><br><span class="line">mean = &#123;&#125;</span><br><span class="line">stdv = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>,testset.data:size(<span class="number">2</span>) <span class="keyword">do</span></span><br><span class="line">    mean[i] = testset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:mean()</span><br><span class="line"><span class="comment">--     print('mean of feature' .. i .. ':'.. mean[i])</span></span><br><span class="line">    testset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:add(-mean[i])</span><br><span class="line">    </span><br><span class="line">    stdv[i] = testset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:std()</span><br><span class="line"><span class="comment">--     print('deviation of feature' .. i .. ':' .. stdv[i])</span></span><br><span class="line">    testset.data[&#123;&#123;&#125;,&#123;i&#125;&#125;]:div(stdv[i])</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">correct = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i=<span class="number">1</span>,testset:size() <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">local</span> groundtruth = testset.label[i]</span><br><span class="line">    <span class="keyword">local</span> prediction = net:forward(testset.data[i])</span><br><span class="line">    <span class="keyword">local</span> confidences, indices = torch.<span class="built_in">sort</span>(prediction, <span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">if</span> groundtruth[<span class="number">1</span>] == indices[<span class="number">1</span>] <span class="keyword">then</span></span><br><span class="line">        correct = correct + <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(correct, <span class="number">100</span>*correct/testset:size() .. <span class="string">' % '</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjewy5d6r000flps6c3d8x190" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/04/GAN-Workflow/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GAN Workflow</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/18/Torch-Tutorial/">Torch_Tutorial</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/04/GAN-Workflow/">GAN Workflow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/Introduction-of-Pascal-VOC-Dataset/">Introduction of Pascal VOC Dataset</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/Frequently-Used-Script/">Frequently Used Script</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/16/Frequently-Used-Commands-in-Windows/">Frequently Used Commands in Windows</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Yasheng Sun<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
