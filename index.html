@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
@@ -60,6 +60,129 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Byesian-Summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/21/Byesian-Summary/" class="article-date">
+  <time datetime="2018-04-21T07:48:11.000Z" itemprop="datePublished">2018-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/21/Byesian-Summary/">Byesian Summary</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>$$X \sim  Beta(\alpha,\beta)$$<br>$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$<br>Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally,<br>$$Beta(1,1) = U(0,1)$$</p>
+<p>$$\theta \sim InvGamma(\alpha, \beta)$$ $$p(\theta) \propto \theta^{-\alpha-1}e^{-\frac{\beta}{\theta}} $$</p>
+<p>$$\theta \sim Gamma(\alpha, \beta)$$ $$p(\theta) \propto \theta^{\alpha-1}e^{-\beta \theta} $$</p>
+<h3 id="Conjugate-Prior"><a href="#Conjugate-Prior" class="headerlink" title="Conjugate Prior"></a>Conjugate Prior</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">prior distribution</th>
+<th style="text-align:center">likelihood</th>
+<th style="text-align:center">posterior distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\(Beta(\alpha,\beta)\)</td>
+<td style="text-align:center">\(B(n,p)\)</td>
+<td style="text-align:center">\(Beta(\alpha+n,\beta+p)\)</td>
+</tr>
+<tr>
+<td style="text-align:center">\(Normal(m_0, \sigma_0)\)</td>
+<td style="text-align:center">\(Normal(\theta, \sigma)(\theta unknown)\)</td>
+<td style="text-align:center">Normal Distribution(Weigted)</td>
+</tr>
+<tr>
+<td style="text-align:center">\(InvGamma(\alpha, \beta)\)</td>
+<td style="text-align:center">\(Normal(\theta, \sigma)(\sigma unknown)\)</td>
+<td style="text-align:center">InvGamma( \(\alpha + 0.5, \beta + \frac{(y-m)^2}{2}\) )</td>
+</tr>
+<tr>
+<td style="text-align:center">\(Gamma(\alpha, \beta)\)</td>
+<td style="text-align:center">\(Possion(\theta)\)</td>
+<td style="text-align:center">\(Gamma(\alpha+y, \beta + 1)\)</td>
+</tr>
+<tr>
+<td style="text-align:center">\(Gamma(\alpha, \beta)\)</td>
+<td style="text-align:center">\(Exponential(\theta)\)</td>
+<td style="text-align:center">\(Gamma(\alpha+1, \beta + y)\)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Exponential-Family"><a href="#Exponential-Family" class="headerlink" title="Exponential Family"></a>Exponential Family</h3><p>Exponential family is a family of distribution in the form of<br>$$p(y|\theta)=f(y)g(\theta)e^{\phi (\theta) u(y)}$$<br>\(\phi (\theta)\) is the natural parameter of the family.<br>\(u(y)\) is sufficient statistics of \(\theta\), the likelihood function depends on \(y\) only through \(u(y)\).</p>
+<p>The conjugate prior of exponential family is $$\theta \sim g(\theta)^a e^{\phi (\theta) b}$$.<br>The \(a\) and \(b\) are parameters of this distribution.<br>In the posterior distribution, the parameters become \(a+1\) and \(b+u(y)\) respectively.</p>
+<h3 id="Uninformative-Prior"><a href="#Uninformative-Prior" class="headerlink" title="Uninformative Prior"></a>Uninformative Prior</h3><h4 id="Improper-prior"><a href="#Improper-prior" class="headerlink" title="Improper prior"></a>Improper prior</h4><p>\(\int p(\theta) = \infty \), \(p(\theta) \propto 1\),  \(\theta \in (- \infty, + \infty)\)<br>It may cause the posterior distribution non-integrable</p>
+<h4 id="Jeffery’s-invariance-prior"><a href="#Jeffery’s-invariance-prior" class="headerlink" title="Jeffery’s invariance prior"></a>Jeffery’s invariance prior</h4><p>The uninformative prior is supposed to independent of parameterization. It implies that prior is variable-invariant.<br>Define Fisher Information<br>$$J(\theta) = E[(\frac{dlog(p(y|\theta))}{d\theta})^2] = - E[\frac{d^2log(p(y|\theta))}{d\theta^2}]$$<br>Prior is \(p(\theta) = \theta^{-0.5}(1-\theta)^{-0.5}\) when \(p(y|\theta) \propto \theta^y (1-\theta)^{n-y}\) .<br>Prior is $$p(\theta) \propto \frac{1}{\theta} $$ when $$p(y|\theta) \propto \theta^{-0.5}exp(-\frac{(y-m)^2}{2\theta}) $$.<br>Prior is $$p(\theta) \propto 1 $$ when $$p(y|\theta) \propto exp(-\frac{(y-\theta)^2}{2\tau}) $$.</p>
+<h3 id="Multi-Parameter-Model"><a href="#Multi-Parameter-Model" class="headerlink" title="Multi Parameter Model"></a>Multi Parameter Model</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">prior</th>
+<th style="text-align:center">model</th>
+<th style="text-align:right">posterior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\(p(\theta_1, \theta_2)\)</td>
+<td style="text-align:center">\(p(y \mid \theta_1, \theta_2)\)</td>
+<td style="text-align:right">\(p(\theta_1, \theta_2 \mid y)\)</td>
+</tr>
+</tbody>
+</table>
+<p>If we are only interested in \(\theta_1\), we call \(\theta_2\) the nuisance parameter. The existance of nuisance parameter adds uncertainty to this model. Formally,<br>$$p(\theta_1 \mid y) = \int p(\theta_1, \theta_2 \mid y) d\theta_2 = \int p(\theta_1 \mid \theta_2, y)p(\theta_2 \mid y) d\theta_2$$<br>Final \(p(\theta_1 \mid y)\) is mixture of lots of \(p(\theta_1 \mid \theta_2, y)\) parametered by \(\theta_2\).</p>
+<h3 id="Uninformative-Prior-in-Multi-Parameter-Model"><a href="#Uninformative-Prior-in-Multi-Parameter-Model" class="headerlink" title="Uninformative Prior in Multi Parameter Model"></a>Uninformative Prior in Multi Parameter Model</h3><h4 id="Jeffery’s-Prior"><a href="#Jeffery’s-Prior" class="headerlink" title="Jeffery’s Prior"></a>Jeffery’s Prior</h4><p>Now Suppose that our model is Normal Distribution. \(p(y \mid \theta) \sim N(\mu, \tau^2)\)<br>Based on the Jeffery’s Prior, the prior indepence between multi-varibale can be proved.<br>$$p(\mu, \tau^2) = p(\mu)p(\tau^2) = 1 * \frac{1}{\tau^2}$$<br>The posterior become $$p(\mu, \tau^2 \mid y) \propto \tau^{-n-2} exp[-\frac{S^2+n(\hat y - \mu)^2}{2\tau^2}]$$ $$S^2 = (y_i - \hat y)^2$$<br>we got</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">\(p(\mu \mid \tau^2, y)\)</th>
+<th style="text-align:center">\(p(\tau^2 \mid y)\)</th>
+<th style="text-align:right">\(p(\mu \mid y)\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\(N(\hat y, \frac{n}{\tau^2})\)</td>
+<td style="text-align:center">\(invKappa(n-1, S^2)\)</td>
+<td style="text-align:right">\(t_{n-1} (\hat y, \frac{S^2}{n})\)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Theoretical-Assurance-of-Baysian-Model-Corretness"><a href="#Theoretical-Assurance-of-Baysian-Model-Corretness" class="headerlink" title="Theoretical Assurance of Baysian Model Corretness"></a>Theoretical Assurance of Baysian Model Corretness</h3><p>With infinite nuumber of data, the probability of this distribution \(\theta\) will collapse to the true \(\theta^\star\).</p>
+<h4 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h4><ol>
+<li>\((y_1, y_2, …, y_n) \sim p(y \mid \theta^\star)\) iid</li>
+<li>There exist \(\theta_0\) such that \(D_KL(p(y \mid \theta^\star), p(y \mid \theta))\) is minimized. \(p(y \mid \theta)\) is our proposed model.</li>
+</ol>
+<h3 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h3><p>Convergence of the posterior for discrete parameter space, if our parameter space H is finite and \(p(\theta = \theta_0) &gt; 0\), \(p(\theta = \theta_0 \mid y) \to 1, n \to \infty\)<br>Proof:<br>$$log(\frac{p(\theta \mid y)}{p(\theta_0 \mid y)}) = log(\frac{p(\theta)p(y \mid \theta)}{p(\theta_0)p(y \mid \theta_0)})$$ $$ = log \frac{p(\theta)}{\theta_0} + log \frac{p(y \mid \theta)}{p(y \mid \theta_0)} $$ $$ = log \frac{p(\theta)}{\theta_0} + \sum_i^n log \frac{p(y_i \mid \theta)}{p(y_i \mid \theta_0)}$$</p>
+<p>$$ E(log \frac{p(y_i \mid \theta)}{p(y_i \mid \theta_0)}) = E_f(log(\frac{f}{log(p(y_i \mid \theta_0))})) - E_f(log(\frac{f}{log(p(y_i \mid \theta))})) &lt; 0$$<br>\(f = p(y \mid \theta^\star)\) is the true distribution.<br>Therefore, right side of this equation converges toward inifinity when n is infinite. Plus, \(p(\theta_0 \mid y)\) is not zero. We obtain \(p(\theta \mid y) \to 0, \forall \theta \ne \theta_0 \Rightarrow p(\theta_0 \mid y) = 1 \)</p>
+<p>Specifically, \(p(\theta \mid y) \to N(\theta_0, \frac{1}{n J(\theta_0)})\) under some regularity conditinos.</p>
+<h3 id="Decision-of-hyerparameter-Prior-Distribution"><a href="#Decision-of-hyerparameter-Prior-Distribution" class="headerlink" title="Decision of hyerparameter(Prior Distribution)"></a>Decision of hyerparameter(Prior Distribution)</h3><h4 id="Hierachical-Bayes-Full-Bayes"><a href="#Hierachical-Bayes-Full-Bayes" class="headerlink" title="Hierachical Bayes(Full Bayes)"></a>Hierachical Bayes(Full Bayes)</h4><p>Make the prior hyerparameter also probabilistic (recursive).<br>$$p(\theta, \alpha \mid y) \propto p(\theta, \alpha) p(y \mid \theta, \alpha) \propto p(y \mid \theta) p(\theta \mid \alpha) p(\alpha)$$ $$p(\theta \mid y) = \int p(\theta, \alpha \mid y) d \alpha$$</p>
+<h4 id="Empirical-Bayes"><a href="#Empirical-Bayes" class="headerlink" title="Empirical Bayes"></a>Empirical Bayes</h4><p>$$\hat \alpha = argmax p(y \mid \alpha) = \int p(y \mid \theta) p(\theta \mid \alpha) d\theta$$ $$p(\theta \mid y) = \int p(\theta \mid \alpha, y) p(\alpha \mid y) d\alpha  = \sum_{i=1}^n w_i p(\theta \mid \alpha_i, y) $$<br>Empirical distribution chooses largest probabilistic distribution \( \hat \alpha = \alpha_i \), but full bayes mixes these distributions.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjg930qtq0000t8s6b8j15drz" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Torch-Tutorial" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -89,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjewy6z3w000jn7s67nge7mxu" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjg930qwk000kt8s62gbjyq3p" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -134,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjewy6z3o000cn7s6bjdcatyh" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjg930qun000dt8s6x6zh75fm" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -175,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjewy6z3r000en7s60ubjvc9o" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjg930quq000ft8s6n89hbnv3" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -212,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjewy6z3l0009n7s6ta7z03i6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjg930qul000bt8s60ug45e93" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -255,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjewy6z3k0008n7s6mjv94zih" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjg930quk000at8s6b7750qb2" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -321,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjewy6z3p000dn7s6oe1owx3n" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjg930qup000et8s682qfumdd" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -363,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjewy6z3d0003n7s68rv22dn3" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjg930qu20004t8s6tibjla5j" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -431,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjewy6z3i0007n7s6dyxv7q6x" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjg930qu90008t8s6kp6q17se" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -483,7 +606,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjewy6z3s000fn7s6fucmxzwe" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjg930qur000gt8s6ec40qaed" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -527,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjewy6z3u000hn7s6f4jx2804" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjg930quv000jt8s6c3rq9136" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -569,7 +692,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjewy6z3f0005n7s6pcray9ti" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjg930qu60006t8s6nzte7ae5" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -608,7 +731,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjewy6z3h0006n7s6aphbij3t" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjg930qu70007t8s6leqpzpl4" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -653,7 +776,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjewy6z3b0002n7s68vugpvsy" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjg930qu10003t8s6d2oxzld2" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -696,7 +819,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjewy6z3m000an7s6nqiqjpqf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjg930quj0009t8s6uw890d49" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -738,7 +861,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjewy6z310000n7s6z3n28ycy" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjg930qtw0001t8s6y14av17k" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -781,7 +904,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjewy6z3t000gn7s6gkrr9yxb" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjg930quu000it8s6eywxi42c" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -834,7 +957,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjewy6z3e0004n7s6o8wr50kf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjg930qu40005t8s66zgn5ww4" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -884,7 +1007,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjewy6z3n000bn7s66gnocml5" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjg930qum000ct8s6228lyp8z" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -926,7 +1049,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjewy6z380001n7s6k092taf7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjg930qtz0002t8s68wkzcr3t" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -971,7 +1094,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjewy6z3v000in7s6b5umcsel" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjg930qut000ht8s6s1thsqp3" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -996,9 +1119,9 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
   </div>
 
@@ -1006,9 +1129,13 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/21/Byesian-Summary/">Byesian Summary</a>
+          </li>
         
           <li>
             <a href="/2018/03/18/Torch-Tutorial/">Torch_Tutorial</a>
@@ -1024,10 +1151,6 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
         
           <li>
             <a href="/2018/02/04/Frequently-Used-Script/">Frequently Used Script</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/16/Frequently-Used-Commands-in-Windows/">Frequently Used Commands in Windows</a>
           </li>
         
       </ul>
