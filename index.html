@@ -170,11 +170,12 @@
 <p>Specifically, \(p(\theta \mid y) \to N(\theta_0, \frac{1}{n J(\theta_0)})\) under some regularity conditinos.</p>
 <h3 id="Decision-of-hyerparameter-Prior-Distribution"><a href="#Decision-of-hyerparameter-Prior-Distribution" class="headerlink" title="Decision of hyerparameter(Prior Distribution)"></a>Decision of hyerparameter(Prior Distribution)</h3><h4 id="Hierachical-Bayes-Full-Bayes"><a href="#Hierachical-Bayes-Full-Bayes" class="headerlink" title="Hierachical Bayes(Full Bayes)"></a>Hierachical Bayes(Full Bayes)</h4><p>Make the prior hyerparameter also probabilistic (recursive).<br>$$p(\theta, \alpha \mid y) \propto p(\theta, \alpha) p(y \mid \theta, \alpha) \propto p(y \mid \theta) p(\theta \mid \alpha) p(\alpha)$$ $$p(\theta \mid y) = \int p(\theta, \alpha \mid y) d \alpha$$</p>
 <h4 id="Empirical-Bayes"><a href="#Empirical-Bayes" class="headerlink" title="Empirical Bayes"></a>Empirical Bayes</h4><p>$$\hat \alpha = argmax p(y \mid \alpha) = \int p(y \mid \theta) p(\theta \mid \alpha) d\theta$$ $$p(\theta \mid y) = \int p(\theta \mid \alpha, y) p(\alpha \mid y) d\alpha  = \sum_{i=1}^n w_i p(\theta \mid \alpha_i, y) $$<br>Empirical distribution chooses largest probabilistic distribution \( \hat \alpha = \alpha_i \), but full bayes mixes these distributions.</p>
+<p>stein’s example<br>$$p(y\mid \theata) \sim N(0,\sigma^2 I_n)$$ $$p(\theta) \sim N(0,\tau^2 I_n)$$ $$ p(\theta \mid y) \sim N((1 - \frac{\simga^2}{\sigma^2 + \tau^2})y, \frac{\sigma^2 \tau^2}{\sigma^2+\tau^2} I_n) $$<br>Denote point estimation \(\hat A = \frac{1}{\sigma^2 + \tau^2}\). It’s unbiased estimation is \(\hat A = \frac{n-2}{y^Ty}\). \(\hat \theta_{EB} = (1-\sigma^2 \hat A)y\)<br>In this case, the components of \(\theta\) is not independent because the \(\hat A\) depends on all the data and affects the \(\hat \theta_{EB}\) </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjgarnd320006cis6prhgbuo7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjgbkjs9x0001wfs6rnknbwq0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjgarnd53000kcis6dyqi0f6g" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjgbkjsaz000hwfs6zgjvble3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjgarnd3e000bcis6isyi8pli" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjgbkjsat000dwfs6pvc0umkc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjgarnd3j000fcis6q6giua9d" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjgbkjsar000bwfs616v5qq0k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjgarnd3g000dcis67ygxdo9a" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjgbkjsav000ewfs6e896usv6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -378,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjgarnd340008cis6o45akue7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjgbkjsam0008wfs6669n7oqm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjgarnd3i000ecis6q0tc2ce8" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjgbkjsaw000fwfs6lbb71m03" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjgarnd310005cis636m9qwhg" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjgbkjsa30004wfs62ol0co0i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjgarnd360009cis6yc8idzr6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjgbkjsao0009wfs6rclbyda8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -606,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjgarnd4w000hcis6gtu2rs7u" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjgbkjsb1000jwfs6cj58850o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -650,7 +651,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjgarnd4z000icis64av1l0k3" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjgbkjsb0000iwfs64m0qqy1k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -692,7 +693,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjgarnd330007cis6tkttkcf6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjgbkjsal0007wfs6zgfc8lto" class="article-share-link">Share</a>
       
       
     </footer>
@@ -731,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjgarnd300003cis6vgxwnc0x" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjgbkjs9r0000wfs6k1xwmtbk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -776,7 +777,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjgarnd310004cis6n3aaft58" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjgbkjsa10003wfs62yzyskbv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -819,7 +820,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjgarnd2z0002cis6natmft3l" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjgbkjsap000awfs6i9pnudgw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -861,7 +862,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjgarnd2r0000cis6nazvh364" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjgbkjsai0005wfs6xqg9bj2i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -904,7 +905,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjgarnd51000jcis606t1desh" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjgbkjsbg000kwfs6zt41a4qv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -957,7 +958,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjgarnd37000acis6jwgjwmn5" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjgbkjsak0006wfs64z0akk6b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1007,7 +1008,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjgarnd3f000ccis65u1l02b5" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjgbkjsas000cwfs64yr9qcpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1049,7 +1050,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjgarnd2w0001cis6fqqchokl" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjgbkjsa00002wfs6g5kh5pg4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1094,7 +1095,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjgarnd3k000gcis6yj5bhy3e" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjgbkjsax000gwfs6m9vbqveg" class="article-share-link">Share</a>
       
       
     </footer>
