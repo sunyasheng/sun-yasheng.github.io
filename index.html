@@ -170,12 +170,12 @@
 <p>Specifically, \(p(\theta \mid y) \to N(\theta_0, \frac{1}{n J(\theta_0)})\) under some regularity conditinos.</p>
 <h3 id="Decision-of-hyerparameter-Prior-Distribution"><a href="#Decision-of-hyerparameter-Prior-Distribution" class="headerlink" title="Decision of hyerparameter(Prior Distribution)"></a>Decision of hyerparameter(Prior Distribution)</h3><h4 id="Hierachical-Bayes-Full-Bayes"><a href="#Hierachical-Bayes-Full-Bayes" class="headerlink" title="Hierachical Bayes(Full Bayes)"></a>Hierachical Bayes(Full Bayes)</h4><p>Make the prior hyerparameter also probabilistic (recursive).<br>$$p(\theta, \alpha \mid y) \propto p(\theta, \alpha) p(y \mid \theta, \alpha) \propto p(y \mid \theta) p(\theta \mid \alpha) p(\alpha)$$ $$p(\theta \mid y) = \int p(\theta, \alpha \mid y) d \alpha$$</p>
 <h4 id="Empirical-Bayes"><a href="#Empirical-Bayes" class="headerlink" title="Empirical Bayes"></a>Empirical Bayes</h4><p>$$\hat \alpha = argmax p(y \mid \alpha) = \int p(y \mid \theta) p(\theta \mid \alpha) d\theta$$ $$p(\theta \mid y) = \int p(\theta \mid \alpha, y) p(\alpha \mid y) d\alpha  = \sum_{i=1}^n w_i p(\theta \mid \alpha_i, y) $$<br>Empirical distribution chooses largest probabilistic distribution \( \hat \alpha = \alpha_i \), but full bayes mixes these distributions.</p>
-<h5 id="stein’s-example"><a href="#stein’s-example" class="headerlink" title="stein’s example"></a>stein’s example</h5><p>$$p(y\mid \theta) \sim N(0,\sigma^2 I_n)$$ $$p(\theta) \sim N(0,\tau^2 I_n)$$ $$ p(\theta \mid y) \sim N((1 - \frac{\sigma^2}{\sigma^2 + \tau^2})y, \frac{\sigma^2 \tau^2}{\sigma^2+\tau^2} I_n) $$<br>Denote point estimation \(\hat A = \frac{1}{\sigma^2 + \tau^2}\). It’s unbiased estimation is \(\hat A = \frac{n-2}{y^Ty}\). \(\hat \theta_{EB} = (1-\sigma^2 \hat A)y\). This empirical estimation is called James-Stein estimation, denoted by \(\theta_{JS}\).<br>In this case, the components of \(\theta\) is not independent because the \(\hat A\) depends on all the data and affects the \(\hat \theta_{EB}\)<br>Back to statistics, \(\theta\) is supposed to be estimated to \(y\). Formally,<br>$$\hat \theta = y$$.<br>Here comes the question. What kind of estimation is supposed to be an excellent estimation? Smaller \(R(\theta, \hat \theta)\) is, better this estimation is. (Usually, the estimation can be divided into two parts including variance and bias. For unbiased estimation, bias equals zero).<br>$$R(\theta, \hat \theta_{JS}) = E[(\theta - \hat \theta_{JS})^2] $$ $$= E[\theta - y + y \frac{n-2}{\parallel y \parallel ^2}] = E[(\theta - y)^2] + 2(n-2) E[\frac{(\theta -y)^Ty}{\parallel y \parallel ^2}] + (n-2)^2 E[\frac{1}{\parallel y \parallel^2}]$$<br>Introduce stein’s Lemma:<br>\(E[(\theta_i - y_i)h(y)] = -E[\frac{\partial h(y_i)}{\partial y_i} ]\)<br>Let<br>$$h(y)= \frac{y_i}{\parallel y \parallel_2^2}$$<br>We obtain<br>$$E[\frac{(\theta - y)^T y}{\parallel y \parallel ^2}] = \sum_i^n E[\frac{(\theta_i -y_i)y_i}{\parallel y \parallel ^2}] $$ $$(= -\sum_i^n E[\frac{1}{\parallel y \parallel^2} - \frac{2y_i^2}{\parallel y \parallel^2}] = - (n-2) E[\frac{1}{\parallel y \parallel^2}]$$<br>To sum up,<br>$$ R(\theta, \hat \theta_{JS}) = E[(\theta - y)^2] - (n-2) E[\frac{1}{\parallel y \parallel^2}] &lt;  E[(\theta - y)^2]$$<br>It implies that the JS estimater is a better estimation. But it seems a little wired that we could obtain a better result by just adding more components to it. That’s why this theory is broadly criticized when it is first published. </p>
+<h5 id="stein’s-example"><a href="#stein’s-example" class="headerlink" title="stein’s example"></a>stein’s example</h5><p>$$p(y\mid \theta) \sim N(0,\sigma^2 I_n)$$ $$p(\theta) \sim N(0,\tau^2 I_n)$$ $$ p(\theta \mid y) \sim N((1 - \frac{\sigma^2}{\sigma^2 + \tau^2})y, \frac{\sigma^2 \tau^2}{\sigma^2+\tau^2} I_n) $$<br>Denote point estimation \(\hat A = \frac{1}{\sigma^2 + \tau^2}\). It’s unbiased estimation is \(\hat A = \frac{n-2}{y^Ty}\). \(\hat \theta_{EB} = (1-\sigma^2 \hat A)y\). This empirical estimation is called James-Stein estimation, denoted by \(\theta_{JS}\).<br>In this case, the components of \(\theta\) is not independent because the \(\hat A\) depends on all the data and affects the \(\hat \theta_{EB}\)<br>Back to statistics, \(\theta\) is supposed to be estimated to \(y\). Formally,<br>$$\hat \theta = y$$.<br>Here comes the question. What kind of estimation is supposed to be an excellent estimation? Smaller \(R(\theta, \hat \theta)\) is, better this estimation is. (Usually, the estimation can be divided into two parts including variance and bias. For unbiased estimation, bias equals zero).<br>$$R(\theta, \hat \theta_{JS}) = E[(\theta - \hat \theta_{JS})^2] $$ $$= E[\theta - y + y \frac{n-2}{\parallel y \parallel ^2}] = E[(\theta - y)^2] + 2(n-2) E[\frac{(\theta -y)^Ty}{\parallel y \parallel ^2}] + (n-2)^2 E[\frac{1}{\parallel y \parallel^2}]$$<br>Introduce stein’s Lemma:<br>$$E[(\theta_i - y_i)h(y)] = -E[\frac{\partial h(y_i)}{\partial y_i} ]$$<br>Let<br>$$h(y)= \frac{y_i}{\parallel y \parallel_2^2}$$<br>We obtain<br>$$E[\frac{(\theta - y)^T y}{\parallel y \parallel ^2}] = \sum_i^n E[\frac{(\theta_i -y_i)y_i}{\parallel y \parallel ^2}] $$ $$= -\sum_i^n E[\frac{1}{\parallel y \parallel^2} - \frac{2y_i^2}{\parallel y \parallel^2}] = - (n-2) E[\frac{1}{\parallel y \parallel^2}]$$<br>To sum up,<br>$$ R(\theta, \hat \theta_{JS}) = E[(\theta - y)^2] - (n-2) E[\frac{1}{\parallel y \parallel^2}] &lt;  E[(\theta - y)^2]$$<br>It implies that the JS estimater is a better estimation. But it seems a little wired that we could obtain a better result by just adding more components to it. That’s why this theory is broadly criticized when it is first published. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjgbr1djx000441s6nnt4hgnw" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjgbr32y100044vs6ho9vkhqc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjgbr1dl6000i41s6phlbe25q" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjgbr32yj000i4vs6m2x9agab" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjgbr1dkw000c41s6mfzfyo2v" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjgbr32yc000c4vs60ydp293w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjgbr1dky000d41s6zmsu6dt9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjgbr32yd000d4vs6qe14zs4b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjgbr1dku000b41s6jdplfmge" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjgbr32yb000b4vs6v23cjhj5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -379,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjgbr1dk9000a41s6kx302ocu" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjgbr32ya000a4vs6p34obv0w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -445,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjgbr1dl2000f41s6ezg2yclg" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjgbr32yg000f4vs6296o7zp9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -487,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjgbr1dk2000641s6ifkk335e" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjgbr32y500064vs63a438lfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -555,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjgbr1dk7000941s6z8xwrny4" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjgbr32y900094vs6wmlzfm9p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -607,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjgbr1dl5000h41s6dsohl679" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjgbr32yi000h4vs6q10q54nt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -651,7 +651,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjgbr1dla000k41s6423wjwgp" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjgbr32ym000k4vs6rzs896cr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -693,7 +693,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjgbr1dk5000841s6wyctn3b6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjgbr32y700084vs6v14lumxs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -732,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjgbr1dju000241s60tu5jp92" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjgbr32xy00024vs6cw59fcs9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -777,7 +777,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjgbr1djz000541s6qrh6jlwl" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjgbr32y300054vs6uusb97j2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -820,7 +820,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjgbr1djw000341s6m0nu1o0k" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjgbr32xz00034vs6y5u4qadr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -862,7 +862,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjgbr1djm000041s6vybac5v7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjgbr32xp00004vs6cfb6okqy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -905,7 +905,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjgbr1dl4000g41s6mas1v0rz" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjgbr32yh000g4vs6ha6lb2x1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -958,7 +958,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjgbr1dk3000741s699vyxnpf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjgbr32y600074vs6w691g5nf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1008,7 +1008,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjgbr1dkz000e41s6amm2d0at" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjgbr32yf000e4vs6er4wqd1i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1050,7 +1050,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjgbr1djs000141s6a2o4n2o0" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjgbr32xv00014vs6bfc9e23s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1095,7 +1095,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjgbr1dl8000j41s6u5336kd7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjgbr32yk000j4vs6cn9eo4i3" class="article-share-link">Share</a>
       
       
     </footer>
