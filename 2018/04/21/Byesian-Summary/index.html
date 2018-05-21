@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
-<meta property="og:updated_time" content="2018-05-21T01:55:28.000Z">
+<meta property="og:updated_time" content="2018-05-21T02:03:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Byesian Theory">
 <meta name="twitter:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
@@ -194,27 +194,36 @@
 <p>The self-correlation is used to evaluate the MCMC.<br>$$ R(s,t) = \frac{E(X_t - \mu_t)(X_s - \mu_s)}{\sigma_s \sigma_t}$$.<br>In Markov Chain, \(\mu = const, \sigma = const\). So the \(R(s,t) = R(t-s) = R(\tau)\). In matlab, \(autocorr(x, size)\) is defined to compute \(R(\tau) \sim \tau\) and \(mhsample()\) to do Metropolis Sampling. Usually, \(R(\tau)\) vanishes slowly when the accept probability is too low or too high. Empirically, the \(R(\tau)\) vanishes quickly when the accept probability belongs to 0.3 to 0.7 under an appropriate step size.</p>
 <h3 id="Decision-Theory"><a href="#Decision-Theory" class="headerlink" title="Decision Theory"></a>Decision Theory</h3><p>Parameter Estimatation is essentially a decision theroy problem. Find a \(\theta^{\star} \) based on<br>$$ p(\theta \mid y) $$ through Loss Expectation Minimization or other loss information.</p>
 <p>In a decision problem, many information are unknown called state of nature( unknown parameter ): \( \theta \in \Theta \). History data \( x \in X \) is provided to give us information. The possible action is denoted by \( a \in A \). Specifically, the action \( a \) is an estimation of \( \theta \) in parameter estimation.</p>
-<p>There key information:\\</p>
+<p>There key information:</p>
 <ol>
 <li>Loss function: \( L(\theta, a) \) represents the loss caused by action \(a\) when parameter is  \( \theta \).</li>
 <li>Prior distribution of \( \theta \): \( \pi(\theta) \).</li>
 <li>Likelihood function: \( f(X \mid \theta) \)</li>
 </ol>
-<p>Example: \\</p>
+<p>Example 1: </p>
 <ol>
 <li>\( \theta \in [0, 1] \): proportion of market.</li>
 <li>\( a \in [0, 1]\): estimation.</li>
 <li>\( x \): data from market investigation.</li>
 </ol>
-<p>Loss:<br>$$<br>L(\theta, a) =<br>    \begin{cases}<br>        \theta - a &amp; \theta \geq a<br>        2(a - \theta) &amp; a \geq \theta<br>    \end{cases}<br>$$</p>
+<p>Loss:<br>$$<br>L(\theta, a) =<br>    \begin{cases}<br>        \theta - a &amp; \theta \geq a \\<br>        2(a - \theta) &amp; a \geq \theta<br>    \end{cases}<br>$$</p>
 <p>Model:<br>$$f(x \mid \theta) = C_n^x \theta ^x (1 - \theta)^(n-x)$$</p>
-<p>Prior:\\<br>U[0.1, 0.2]</p>
+<p>Prior:<br>U[0.1, 0.2]</p>
+<p>Example 2: \\</p>
+<ol>
+<li>\( \theta \in [0,1]\): defective rate.</li>
+<li>\((x, n)\): defective samples in all samples.</li>
+<li>\\a \in (A, R)\): A is acception and R is Rejection.</li>
+</ol>
+<p>Loss:<br>$$<br>L(\theta, A) = 10 \theta<br>L(\theta, R) = const<br>$$</p>
+<p>Model:<br>$$f(x \mid \theta) = C_n^x \theta ^x (1 - \theta)^(n-x)$$</p>
+<p>Prior:<br>U[0, 1] or Beta(0.05, 1)</p>
 <h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhflmuyi0001qus6fod2m5ve" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhflx30l0004rrs6faj6eayx" class="article-share-link">Share</a>
       
       
     </footer>
