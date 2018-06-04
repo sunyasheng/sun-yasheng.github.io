@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
-<meta property="og:updated_time" content="2018-06-04T03:10:00.000Z">
+<meta property="og:updated_time" content="2018-06-04T03:20:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Byesian Theory">
 <meta name="twitter:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
@@ -231,16 +231,16 @@
 <p>The Bayesian(Posterior) expected loss:<br>\( \int L(\theta, a) \pi(\theta \mid x) d\theta  \)<br>Choose an action \(a \in \triangle \) by minimize expected loss. Such an action is called a Bayes action. </p>
 <h2 id="Bayesian-Regression"><a href="#Bayesian-Regression" class="headerlink" title="Bayesian Regression"></a>Bayesian Regression</h2><h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>$$y = f(x) + noise = w^Tx + noise$$ $$noise \sim N(0, \sigma^2)$$<br>There are many common approches to learn the parameter weight \(w\) such as MSE which will not be described here.<br>Instead we will talk about it from the perspective of Bayesian Statistics.<br>Now we obtain the model or the likelihood \( p(y \mid w) = N(w^Tx, \sigma^2)\) and we assume the prior probability to be<br>\(p(w) = N(0, \Sigma_w)\). Hence the posterior probability is \( N(\mu_1, \sigma_1) \).<br>$$p(y \mid w) = N(X^Tw, \sigma^2 I)$$<br>$$p(w \mid y) \sim exp(-(y-X^Tw)^T(y-X^Tw) - 0.5 w^T \Sigma^{-1} w) $$<br>$$\sim exp(-0.5(w-\bar w)^T(\frac{1}{\sigma^2} XX^T + \Sigma_w^{-1})(w-\bar w))$$<br>$$\bar w = \sigma^{-2}(\sigma^2 XX^T + \Sigma_w^{-1})^{-1}Xy $$<br>$$ A = (\frac{1}{\sigma^2}XX^T + \Sigma_w^{-1})$$<br>If the prior is Laplacian, then this is LASSO Regression.<br>If the prior is Gaussian, then this is Ridge Regression.</p>
 <h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p>$$p(y^{\star}\mid y) = \int p(y^{\star} \mid w)p(w\mid y)dw$$<br>$$ = \int x^{\star T}w p(w \mid y)dw$$<br>$$ = N(\frac{x^{\star T} A^{-1} X y}{\sigma^2}, x^{\star T}A^{-1}x^{\star})$$</p>
-<h3 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h3><p>To make our model adaptable to broader cases, kernel trick is usually introduced.<br>$$k(x, x) = \phi(x) A^{-1} \phi(x)$$<br>$$p(y^{\star}\mid y) = N(\frac{1}{\sigma^2}\Phi(x^{\star})A^{-1}\Phi y, \Phi(x^{\star})A^{-1}\Phi(x^{\star}) )$$</p>
+<h3 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h3><p>To make our model adaptable to broader cases, kernel trick is usually introduced.<br>$$k(x, x) = \phi(x) A^{-1} \phi(x)$$<br>$$p(y^{\star}\mid y) = N(\frac{1}{\sigma^2}\Phi(x^{\star})^T A^{-1}\Phi y, \Phi(x^{\star})^T A^{-1}\Phi(x^{\star}) )$$</p>
 <h2 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h2><p>Assumption: \(f(x)\) is a random process.<br>For any given \(x\), \(f(x)\) is random variable.<br>Assumption(GP): \(f(x)\) is a Gaussian Process: let any \((x_1, x_2, …, x_n)\) be any n points in the input<br>space, for any finite n, \((f(x_1), f(x_2), …, f(x_n))\) follows a multivariate Gaussian Distribution).<br>$$E(f(x)) = m(x) $$<br>$$k(x,x’) = E((f(x)-m(x))(f(x’)-m(x’))) = cov(f(x), f(x’))$$<br>covariance function of GP f(x)</p>
 <p>Assume that $$w \sim N(0, I)$$<br>If $$f(x) = w^Tx$$ then $$f(x) \sim GP(0, x^Tx’)$$<br>If $$f(x) = w^T\Phi(x)$$ then $$f(x) \sim GP(0, \Phi(x)^T\Phi(x’))$$</p>
-<p>Training Set:<br>(X, Y)<br>Testing Set:<br>(X^{\star}, Y^{\star})</p>
+<p>Training Set:<br>$$(X, Y)$$<br>Testing Set:<br>$$(X^{\star}, Y^{\star})$$<br>$$f \sim (0, k(x, x’))$$</p>
 <h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzogrkn000kx8s6jangzyz9" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzouf0i0002xvs6nf7zwh36" class="article-share-link">Share</a>
       
       
     </footer>
