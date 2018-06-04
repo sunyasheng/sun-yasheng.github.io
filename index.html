@@ -227,13 +227,14 @@
 <p>A decision rule \(p_1\) is said to be R-Better that \(p_2\) if \(R(\theta, p_1) \leq R(\theta, p_2)\) for all \(\theta \in \Theta\), with some strict inequality for some \( \theta \). A decision rule is admissable if there exists no R-Better decision rule. </p>
 <p>Expected Loss:<br>$$ E_{p(\theta)}(L(\theta, a)) = \int L(\theta, a) p(\theta) d\theta$$<br>If \( p(\theta) = \pi(\theta) \), we call it prior expected loss. Contrastly, \( p(\theta) = \pi(\theta \mid x) \) is posterior expected loss.</p>
 <p>The Bayesian(Posterior) expected loss:<br>\( \int L(\theta, a) \pi(\theta \mid x) d\theta  \)<br>Choose an action \(a \in \triangle \) by minimize expected loss. Such an action is called a Bayes action. </p>
-<h2 id="Bayesian-Regression"><a href="#Bayesian-Regression" class="headerlink" title="Bayesian Regression"></a>Bayesian Regression</h2><p>\(y = f(x) + noise = w^Tx + noise\)<br>There are many common approches to learn the parameter weight \(w\) such as MSE which will not be described here.<br>Instead we will talk about it from the perspective of Bayesian Statistics.<br>Now we obtain the model or the likelihood \( p(y \mid w) = N(w^T, \sigma^2)\) and we assume the prior probability to be<br>\(p(w) = N(0, \Sigma_w)\). Hence the posterior probability is \( N(\mu_1, \sigma_1) \).<br>$$p(w \mid y) \sim exp(-(y-X^Tw)^T(y-X^Tw))^T(y-X^Tw)^T(y-X^Tw)) $$<br>$$\sim exp(-0.5(w-\bar w)^T(\frac{1}{\sigma^2 XX^T + \Sigma_w^{-1}})(w-\bar w))$$<br>$$\bar w = \sigma^{-2}(\sigma^2 XX^T + \Sigma_w^{-1})^{-1}Xy $$<br>$$ A = (\frac{1}{\simga^2}XX^T + \Sigma_w^{-1})$$<br>If the prior is Laplacian, then this is LASSO Regression.<br>If the prior is Gaussian, then this is Ridge Regression.</p>
+<h2 id="Bayesian-Regression"><a href="#Bayesian-Regression" class="headerlink" title="Bayesian Regression"></a>Bayesian Regression</h2><h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>$$y = f(x) + noise = w^Tx + noise$$<br>\(noise \sim N(0, \sigma^2)\)<br>There are many common approches to learn the parameter weight \(w\) such as MSE which will not be described here.<br>Instead we will talk about it from the perspective of Bayesian Statistics.<br>Now we obtain the model or the likelihood \( p(y \mid w) = N(w^T, \sigma^2)\) and we assume the prior probability to be<br>\(p(w) = N(0, \Sigma_w)\). Hence the posterior probability is \( N(\mu_1, \sigma_1) \).<br>$$p(w \mid y) \sim exp(-(y-X^Tw)^T(y-X^Tw))^T(y-X^Tw)^T(y-X^Tw)) $$<br>$$\sim exp(-0.5(w-\bar w)^T(\frac{1}{\sigma^2 XX^T + \Sigma_w^{-1}})(w-\bar w))$$<br>$$\bar w = \sigma^{-2}(\sigma^2 XX^T + \Sigma_w^{-1})^{-1}Xy $$<br>$$ A = (\frac{1}{\sigma^2}XX^T + \Sigma_w^{-1})$$<br>If the prior is Laplacian, then this is LASSO Regression.<br>If the prior is Gaussian, then this is Ridge Regression.</p>
+<h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p>$$p(y^{\star}\mid y) = \int p(y^{\star} \mid w)p(w\mid y)dw$$<br>$$ = \int x^{\star T}w p(w \mid y)dw$$<br>$$ = N(\frac{X^{\star T}w A^{-1} X y}{\sigma^2}, x^{\star T}A^{-1}x^{\star})$$</p>
 <h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzlh35t0004ols6gjwk2o44" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzluc8f0009pms64iyno8uj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -271,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjhzlh37v000kols6ihp0bg3p" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjhzluc8r000kpms6r20hm4ps" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjhzlh363000bols62cmrt92o" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjhzluc8j000cpms6ivobjwx8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjhzlh367000eols6nmhc809f" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjhzluc8m000fpms6i44fdw9u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjhzlh366000dols6kiztfmut" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjhzluc8i000bpms6o7ghu9u4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjhzlh3600009ols6l0a7ig7d" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjhzluc8d0008pms6w3u6ljjm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjhzlh368000fols6qgbeunew" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjhzluc8n000gpms6p1lhrrd0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -545,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjhzlh35w0007ols6v8t14id7" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjhzluc860004pms6jeqeo7pz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -613,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjhzlh35z0008ols6ejtuwskt" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjhzluc8c0007pms6j7ca516t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -665,7 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjhzlh369000gols6vc6iwewy" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjhzluc8q000jpms634j88fz1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -709,7 +710,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjhzlh36b000iols6bq2eu6xb" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjhzluc8p000ipms60quggrkj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,7 +752,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjhzlh35v0006ols62tceropz" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjhzluc8a0006pms6leysclk0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -790,7 +791,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjhzlh35q0002ols6fm9mo6qe" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjhzluc810001pms6bwltkj82" class="article-share-link">Share</a>
       
       
     </footer>
@@ -835,7 +836,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjhzlh35s0003ols6f8as44u0" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjhzluc850003pms6yioxx3y5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -878,7 +879,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjhzlh35u0005ols64xdva26a" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjhzluc8h000apms6i1l6n81n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -920,7 +921,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjhzlh3590000ols6345konik" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjhzluc840002pms6pcx2u0gy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -963,7 +964,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjhzlh36a000hols614j3dqij" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjhzluc8l000epms65ogkf6ko" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1016,7 +1017,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjhzlh362000aols6ft89jm96" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjhzluc880005pms69ncqlj53" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1066,7 +1067,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjhzlh364000cols69vxsgpyf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjhzluc8k000dpms6xbzluhrm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1108,7 +1109,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjhzlh35o0001ols6btrp0hlo" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjhzluc7w0000pms6by4y1ahh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1153,7 +1154,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjhzlh37u000jols6hgj41o9k" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjhzluc8o000hpms6gyjif7tm" class="article-share-link">Share</a>
       
       
     </footer>
