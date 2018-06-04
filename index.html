@@ -183,7 +183,7 @@
 </ol>
 <p>A sufficient but not necessary condition for a chain to converge to an invariant distribution is the detailed balance condition.<br>$$P(x^i)T(x^{i-1}\mid x^{i}) = P(x^{i-1})T(x^i \mid x^{i-1})$$<br>Metropolis-Hasting algorithm is just sampling and rejecting to force the sample to walk towards high probability place. This process satisfies the detailed balance condition such that it finally converges to the original probability distribution.</p>
 <h4 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h4><p>The proposed distribution is defined as<br>$$ q(x^\star \mid x^i) = p(x_j^{\star} \mid x_{-j}^{i}) 1[x_{-j}^{\star} = x_{-j}^i]$$</p>
-<h3 id="MCMC-Markov-Chain-Monte-Carlo"><a href="#MCMC-Markov-Chain-Monte-Carlo" class="headerlink" title="MCMC(Markov Chain Monte-Carlo)"></a>MCMC(Markov Chain Monte-Carlo)</h3><h4 id="Adaptive-MCMC"><a href="#Adaptive-MCMC" class="headerlink" title="Adaptive MCMC"></a>Adaptive MCMC</h4><h5 id="Independence-Sampler"><a href="#Independence-Sampler" class="headerlink" title="Independence Sampler"></a>Independence Sampler</h5><p>Intuitively, we accept our proposed sample with a higher probability when the proposed sampler is more similar with the original probability distribution. If the proposed probability distribution is Gaussian, it requires the mean and coveriance is sufficient to describe the original probability distribution. Therefore, algorithm can be stated as first sample the data following the traditional routine to estimate mean and coveriance and than make use of this estimated parameter to do the independence sampler. </p>
+<h3 id="MCMC-Markov-Chain-Monte-Carlo"><a href="#MCMC-Markov-Chain-Monte-Carlo" class="headerlink" title="MCMC(Markov Chain Monte-Carlo)"></a>MCMC(Markov Chain Monte-Carlo)</h3><h4 id="Adaptive-MCMC"><a href="#Adaptive-MCMC" class="headerlink" title="Adaptive MCMC"></a>Adaptive MCMC</h4><h5 id="Independence-Sampler"><a href="#Independence-Sampler" class="headerlink" title="Independence Sampler"></a>Independence Sampler</h5><p>Intuitively, we accept our proposed sample with a higher probability when the proposed sampler is more similar with the original probability distribution. If the proposed probability distribution is Gaussian, it requires the mean and covariance is sufficient to describe the original probability distribution. Therefore, algorithm can be stated as first sample the data following the traditional routine to estimate mean and coveriance and than make use of this estimated parameter to do the independence sampler. </p>
 <h5 id="Adaptive-Metropolis-Algorithm"><a href="#Adaptive-Metropolis-Algorithm" class="headerlink" title="Adaptive Metropolis Algorithm"></a>Adaptive Metropolis Algorithm</h5><p>Recall that in Metropolis Algorithm, the proposed sample is random walk surrounding \(x_n\). Formally, \(x^\star = x_n + \epsilon\), \(\epsilon \sim N(0, \sigma^2 I_n)\). When the dimension of the variable is dependent and not isotropic, the random walk behave poorly. A better coveriance \(C_t\) is required to describe the original distribution. So the proposed distribution is defined as<br>$$ p(x^\star \mid x_n) = N(x_n, \sigma^2 C_t)$$ </p>
 <p>The \(C_t\) is updated at every time t following<br>$$Cov(X_0, X_1, … , X_t) = \frac{\sum_{i=1}^{t-1}(x_ix_i^{t} - ((t-1)+1)\bar x_{t-1}\bar x_{t-1}^T)}{t}$$.<br>$$\bar x_{t-1} = \frac{\sum_{i=0}^{t-1} x_i}{t}$$. </p>
 <p>Or we could compute \(C_t\) recursively, $$C_{t+1} = \frac{(t-1)C_t}{t} + \frac{t\bar x_{t-1} \bar x_{t-1}^T - (t+1)\bar x_t \bar x_t ^T + x_t x_t^T}{t}$$ </p>
@@ -229,13 +229,15 @@
 <p>The Bayesian(Posterior) expected loss:<br>\( \int L(\theta, a) \pi(\theta \mid x) d\theta  \)<br>Choose an action \(a \in \triangle \) by minimize expected loss. Such an action is called a Bayes action. </p>
 <h2 id="Bayesian-Regression"><a href="#Bayesian-Regression" class="headerlink" title="Bayesian Regression"></a>Bayesian Regression</h2><h3 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h3><p>$$y = f(x) + noise = w^Tx + noise$$ $$noise \sim N(0, \sigma^2)$$<br>There are many common approches to learn the parameter weight \(w\) such as MSE which will not be described here.<br>Instead we will talk about it from the perspective of Bayesian Statistics.<br>Now we obtain the model or the likelihood \( p(y \mid w) = N(w^Tx, \sigma^2)\) and we assume the prior probability to be<br>\(p(w) = N(0, \Sigma_w)\). Hence the posterior probability is \( N(\mu_1, \sigma_1) \).<br>$$p(y \mid w) = N(X^Tw, \sigma^2 I)$$<br>$$p(w \mid y) \sim exp(-(y-X^Tw)^T(y-X^Tw) - 0.5 w^T \Sigma^{-1} w) $$<br>$$\sim exp(-0.5(w-\bar w)^T(\frac{1}{\sigma^2} XX^T + \Sigma_w^{-1})(w-\bar w))$$<br>$$\bar w = \sigma^{-2}(\sigma^2 XX^T + \Sigma_w^{-1})^{-1}Xy $$<br>$$ A = (\frac{1}{\sigma^2}XX^T + \Sigma_w^{-1})$$<br>If the prior is Laplacian, then this is LASSO Regression.<br>If the prior is Gaussian, then this is Ridge Regression.</p>
 <h3 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h3><p>$$p(y^{\star}\mid y) = \int p(y^{\star} \mid w)p(w\mid y)dw$$<br>$$ = \int x^{\star T}w p(w \mid y)dw$$<br>$$ = N(\frac{x^{\star T} A^{-1} X y}{\sigma^2}, x^{\star T}A^{-1}x^{\star})$$</p>
-<h3 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h3><p>To make our model adaptable to broader cases, kernel trick is usually introduced.<br>$$p(y^{\star}\mid y) = N(\frac{1}{\sigma^2}\Phi(x^{\star})A^{-1}\Phi y, \Phi(x^{\star})A^{-1}\Phi(x^{\star}) )$$</p>
+<h3 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h3><p>To make our model adaptable to broader cases, kernel trick is usually introduced.<br>$$k(x, x) = \phi(x) A^{-1} \phi(x)$$<br>$$p(y^{\star}\mid y) = N(\frac{1}{\sigma^2}\Phi(x^{\star})A^{-1}\Phi y, \Phi(x^{\star})A^{-1}\Phi(x^{\star}) )$$</p>
+<h2 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h2><p>Assumption: \(f(x)\) is a random process.<br>For any given \(x\), \(f(x)\) is random variable.<br>Assumption(GP): \(f(x)\) is a Gaussian Process: let any \((x_1, x_2, …, x_n)\ be any n points in the input<br>space, for any finite n, \((f(x_1), f(x_2), …, f(x_n))\) follows a multivariate Gaussian Distribution).<br>$$E(f(x)) = m(x) $$<br>$$k(x,x’) = E((f(x)-m(x))(f(x’)-m(x’))) = cov(f(x), f(x’))$$<br>covariance function of GP f(x)</p>
+<p>If $$f(x) = w^Tx$$, then $$f(x) \sim GP(0, x^Tx’)$$<br>If $$f(x) = w^T\Phi(x)$$, then $$f(x) \sim GP(0, \Phi(x)^T\Phi(x’))$$</p>
 <h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzn73eg0004v0s6nxoqj8wp" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzo9w9d0004w3s6qcu3fvi8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjhzn73ey000iv0s6ak19ue2c" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjhzo9w9u000iw3s635ahezky" class="article-share-link">Share</a>
       
       
     </footer>
@@ -318,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjhzn73eq000cv0s6nemm8hgh" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjhzo9w9o000cw3s6q9by0a6z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjhzn73es000dv0s6x73utf5g" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjhzo9w9p000dw3s65nm5l2ka" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjhzn73ep000bv0s6mc8m8cce" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjhzo9w9n000bw3s6d238ra6k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -439,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjhzn73eo000av0s6xqrokpms" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjhzo9w9m000aw3s67pjibqwo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -505,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjhzn73eu000fv0s66nifenqh" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjhzo9w9r000fw3s660y0e2tk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -547,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjhzn73ej0006v0s6hnqz6ka6" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjhzo9w9g0006w3s6ply86esi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -615,7 +617,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjhzn73en0009v0s6a48me729" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjhzo9w9k0009w3s6w4l47e6i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -667,7 +669,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjhzn73ew000hv0s6q0br30xb" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjhzo9w9t000hw3s613celzn5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -711,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjhzn73f0000kv0s6536rc3fi" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjhzo9w9w000kw3s6ewgyzyv4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -753,7 +755,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjhzn73em0008v0s6e9tvpkjq" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjhzo9w9j0008w3s6jckh9mio" class="article-share-link">Share</a>
       
       
     </footer>
@@ -792,7 +794,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjhzn73ec0002v0s65vk2ysy1" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjhzo9w990002w3s63a4lmyu4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -837,7 +839,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjhzn73ei0005v0s6xgkvbuma" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjhzo9w9f0005w3s6s5iufm9t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -880,7 +882,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjhzn73ed0003v0s651ub8c91" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjhzo9w9b0003w3s6xxw82xcf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -922,7 +924,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjhzn73e40000v0s6clf8wfus" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjhzo9w8z0000w3s6qx6dy1oa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -965,7 +967,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjhzn73ev000gv0s6g82f2dkf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjhzo9w9s000gw3s6hc2rwwb2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1018,7 +1020,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjhzn73ek0007v0s6zyavhwbf" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjhzo9w9i0007w3s64gpuaoqd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1068,7 +1070,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjhzn73et000ev0s6co6lekwa" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjhzo9w9q000ew3s615hbwyr7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1110,7 +1112,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjhzn73e90001v0s65yfah8cq" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjhzo9w960001w3s69l9sf5tb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1155,7 +1157,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjhzn73ez000jv0s69ep9i6sj" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjhzo9w9v000jw3s6vk6j7xs5" class="article-share-link">Share</a>
       
       
     </footer>
