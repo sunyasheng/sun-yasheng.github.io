@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
-<meta property="og:updated_time" content="2018-05-27T14:57:41.000Z">
+<meta property="og:updated_time" content="2018-06-04T01:45:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Byesian Theory">
 <meta name="twitter:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
@@ -229,12 +229,13 @@
 <p>A decision rule \(p_1\) is said to be R-Better that \(p_2\) if \(R(\theta, p_1) \leq R(\theta, p_2)\) for all \(\theta \in \Theta\), with some strict inequality for some \( \theta \). A decision rule is admissable if there exists no R-Better decision rule. </p>
 <p>Expected Loss:<br>$$ E_{p(\theta)}(L(\theta, a)) = \int L(\theta, a) p(\theta) d\theta$$<br>If \( p(\theta) = \pi(\theta) \), we call it prior expected loss. Contrastly, \( p(\theta) = \pi(\theta \mid x) \) is posterior expected loss.</p>
 <p>The Bayesian(Posterior) expected loss:<br>\( \int L(\theta, a) \pi(\theta \mid x) d\theta  \)<br>Choose an action \(a \in \triangle \) by minimize expected loss. Such an action is called a Bayes action. </p>
+<h2 id="Bayesian-Regression"><a href="#Bayesian-Regression" class="headerlink" title="Bayesian Regression"></a>Bayesian Regression</h2><p>\(y = f(x) + noise = w^Tx + noise\)<br>There are many common approches to learn the parameter weight \(w\) such as MSE which will not be described here.<br>Instead we will talk about it from the perspective of Bayesian Statistics.<br>Now we obtain the model or the likelihood \( p(y \mid w) = N(w^T, \sigma^2)\) and we assume the prior probability to be<br>\(p(w) = N(0, \Sigma_w)\). Hence the posterior probability is \( N(\mu_1, \sigma_1) \).<br>$$p(w \mid y) \sim exp(-(y-X^Tw)^T(y-X^Tw))^T(y-X^Tw)^T(y-X^Tw)) $$<br>$$\sim exp(-0.5(w-\bar w)^T(\frac{1}{\sigma^2 XX^T + \Sigma_w^{-1}})(w-\bar w))$$<br>$$\bar w = \sigma^{-2}(\sigma^2 XX^T + \Sigma_w^{-1})^{-1}Xy $$<br>$$ A = (\frac{1}{\simga^2}XX^T + \Sigma_w^{-1})$$<br>If the prior is Laplacian, then this is LASSO Regression.<br>If the prior is Gaussian, then this is Ridge Regression.</p>
 <h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhoy88vt0001p6s64iydac9w" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjhzlh35t0004ols6gjwk2o44" class="article-share-link">Share</a>
       
       
     </footer>
