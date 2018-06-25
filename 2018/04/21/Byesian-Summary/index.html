@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
-<meta property="og:updated_time" content="2018-06-25T01:21:55.000Z">
+<meta property="og:updated_time" content="2018-06-25T01:23:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Byesian Theory">
 <meta name="twitter:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
@@ -235,13 +235,14 @@
 <h2 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h2><p>Assumption: \(f(x)\) is a random process.<br>For any given \(x\), \(f(x)\) is random variable.<br>Assumption(GP): \(f(x)\) is a Gaussian Process: let any \((x_1, x_2, …, x_n)\) be any n points in the input<br>space, for any finite n, \((f(x_1), f(x_2), …, f(x_n))\) follows a multivariate Gaussian Distribution).<br>$$E(f(x)) = m(x) $$<br>$$k(x,x’) = E((f(x)-m(x))(f(x’)-m(x’))) = cov(f(x), f(x’))$$<br>covariance function of GP f(x)</p>
 <p>Assume that $$w \sim N(0, I)$$<br>If $$f(x) = w^Tx$$ then $$f(x) \sim GP(0, x^Tx’)$$<br>If $$f(x) = w^T\Phi(x)$$ then $$f(x) \sim GP(0, \Phi(x)^T\Phi(x’))$$</p>
 <p>Training Set:<br>$$(X, Y)$$<br>Testing Set:<br>$$(X^{\star}, Y^{\star})$$<br>$$f \sim (0, k(x, x’))$$</p>
-<p>The joint distribution of the \(y\) and \(y^{\star}\) can be described as </p>
+<p>The joint distribution of the \(y\) and \(y^{\star}\) can be described as<br>$$\left[<br>        \begin{matrix}<br>            y\\<br>            y^{\star}<br>        \end{matrix}<br>    \right]<br>    \sim<br>    N(0,<br>    \left[<br>        \begin{matrix}<br>            k(x,x) &amp; k(x, x^{\star}\\<br>            k(x^{\star}, x) &amp; k(x^{\star}, x^{\star})<br>        \end{matrix}<br>    \right]<br>    )$$</p>
+<p>$$p(y^{\star} \mid y) = \frac{p(y, y^{\star})}{p(y)}$$<br>where the<br>$$p(y) = N(0, k(y,y))$$<br>We can obtain the \(p(y^{\star}\mid y)\).<br>$$p(y^{\star}\mid y) = N(k(y^{\star}, y)k^{-1}(y,y)y, k(y^{\star}, y^{\star})- k(y,y^{\star})k^{-1}(y,y)k^{T}(y,y^{\star}))$$<br>There are three typical kinds of kernel function. And the parameters in kernel function plays an important role in<br>successfully applying the GP to practical problem. So be careful to pick those parameters.</p>
 <h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank <a href="http://math.sjtu.edu.cn/faculty/show.php?id=122" target="_blank" rel="noopener">Prof. Li</a> for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjitku7ak0004zis6fxhxan58" class="article-share-link">Share</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjitkw4mw000401s62lybuqo0" class="article-share-link">Share</a>
       
       
     </footer>
