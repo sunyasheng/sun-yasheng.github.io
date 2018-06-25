@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
@@ -233,14 +233,13 @@
 <h2 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h2><p>Assumption: \(f(x)\) is a random process.<br>For any given \(x\), \(f(x)\) is random variable.<br>Assumption(GP): \(f(x)\) is a Gaussian Process: let any \((x_1, x_2, …, x_n)\) be any n points in the input<br>space, for any finite n, \((f(x_1), f(x_2), …, f(x_n))\) follows a multivariate Gaussian Distribution).<br>$$E(f(x)) = m(x) $$<br>$$k(x,x’) = E((f(x)-m(x))(f(x’)-m(x’))) = cov(f(x), f(x’))$$<br>covariance function of GP f(x)</p>
 <p>Assume that $$w \sim N(0, I)$$<br>If $$f(x) = w^Tx$$ then $$f(x) \sim GP(0, x^Tx’)$$<br>If $$f(x) = w^T\Phi(x)$$ then $$f(x) \sim GP(0, \Phi(x)^T\Phi(x’))$$</p>
 <p>Training Set:<br>$$(X, Y)$$<br>Testing Set:<br>$$(X^{\star}, Y^{\star})$$<br>$$f \sim (0, k(x, x’))$$</p>
-<p>The joint distribution of the \(y\) and \(y^{\star}\) can be described as<br>$$<br>    \left[<br>        \begin{matrix}<br>            y\\<br>            y^{\star}<br>        \end{matrix}<br>    \right]<br>    \sim<br>    N(0,<br>    \left[<br>        \begin{matrix}<br>            k(x,x) &amp; k(x, x^{\star}\\<br>            k(x^{\star}, x) &amp; k(x^{\star}, x^{\star})<br>        \end{matrix}<br>    \right]<br>    )<br>$$</p>
-<p>$$<br>    p(y^{\star} \mid y) = \frac{p(y, y^{\star})}{p(y)}<br>$$<br>where the<br>$$<br>    p(y) = N(0, k(y,y))<br>$$<br>We can obtain the \(p(y^{\star}\mid y)\).<br>$$<br>    p(y^{\star}\mid y) = N(k(y^{\star}, y)k^{-1}(y,y)y, k(y^{\star}, y^{\star})- k(y,y^{\star})k^{-1}(y,y)k^{T}(y,y^{\star}))<br>$$<br>There are three typical kinds of kernel function. And the parameters in kernel function plays an important role in<br>successfully applying the GP to practical problem. So be careful to pick those parameters.</p>
-<h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
+<p>The joint distribution of the \(y\) and \(y^{\star}\) can be described as </p>
+<h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank <a href="http://math.sjtu.edu.cn/faculty/show.php?id=122" target="_blank" rel="noopener">Prof. Li</a> for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjitkntcl0002y5s601g016kx" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjitku7ak0004zis6fxhxan58" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjitkntdm000ky5s6g2obgt4r" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/18/Torch-Tutorial/" data-id="cjitku7az000izis6xojt7prp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjitkntcx000by5s6hxmfx3pl" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/03/04/GAN-Workflow/" data-id="cjitku7at000czis60u3iryt3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjitkntd2000fy5s6ia56csao" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Introduction-of-Pascal-VOC-Dataset/" data-id="cjitku7au000dzis6e7kqz4st" class="article-share-link">Share</a>
       
       
     </footer>
@@ -401,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjitkntd0000dy5s6sz1n5los" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/02/04/Frequently-Used-Script/" data-id="cjitku7as000bzis6g2ur0r4u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjitkntcu0009y5s6j76nxmim" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Frequently-Used-Commands-in-Windows/" data-id="cjitku7ar000azis6tm8s5l67" class="article-share-link">Share</a>
       
       
     </footer>
@@ -510,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjitkntd1000ey5s6wimc1cwy" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Papers-relevant-to-Video-Prediction/" data-id="cjitku7aw000fzis6jogtq0w9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -552,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjitkntcp0005y5s6pvyhwb71" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Details-of-Neural-Network/" data-id="cjitku7am0006zis6dmovtzvv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -620,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjitkntct0008y5s6j2toaxmt" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Framework-of-Unsupervised-Learning/" data-id="cjitku7ap0009zis6vjzsff6y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -672,7 +671,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjitkntd3000gy5s6ol15rd52" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/01/16/Representation/" data-id="cjitku7ay000hzis61xln6lfw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -716,7 +715,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjitkntd6000iy5s6s9oink7e" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/31/致新的一年/" data-id="cjitku7b2000kzis6aa16f03f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -758,7 +757,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjitkntcv000ay5s6jpozcp9w" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/12/Fast-Fourier-transform/" data-id="cjitku7ao0008zis6bxarp2kp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -797,7 +796,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjitkntcj0001y5s6qylsz3co" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/11/Actor-Critic-And-Deep-Deterministic-Policy-Gradient/" data-id="cjitku7ai0002zis61njhzpn8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -842,7 +841,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjitkntcn0003y5s6ky8r59x5" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/10/Deep-Q-Neural-Network/" data-id="cjitku7al0005zis6r6v2tdmy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -885,7 +884,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjitkntcs0007y5s6jrr1usen" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/08/An-Elegant-Way-to-Cover-Line-Segments-with-Grids/" data-id="cjitku7aj0003zis60ma8yl5l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -927,7 +926,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjitkntco0004y5s6v1jk8ke8" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/06/3-Dimensional-Reconstruction-from-2-Dimensional-Slicing/" data-id="cjitku7aa0000zis6kxspof2k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -970,7 +969,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjitkntd4000hy5s6qp1euej8" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/05/Particle-Swarm-Optimization/" data-id="cjitku7ax000gzis6stzrlq6i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1023,7 +1022,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjitkntcq0006y5s6jtgpng68" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/02/Experience-in-Tian-Chi-Big-Data-Competetion/" data-id="cjitku7an0007zis65ns5f27a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1073,7 +1072,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjitkntcy000cy5s6at9mvdcr" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/12/01/PI超级计算使用常用shell命令/" data-id="cjitku7av000ezis6gwczmorc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1115,7 +1114,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjitkntce0000y5s687dm3thz" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/3D-Printing-Model-Repairing/" data-id="cjitku7af0001zis68mutiqi7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1160,7 +1159,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjitkntd8000jy5s6r5di0wbg" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2017/11/16/hello-world/" data-id="cjitku7b0000jzis617uu7r28" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1185,7 +1184,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
@@ -1195,7 +1194,7 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -1229,6 +1228,43 @@ grids.insert(make_pair(<span class="keyword">int</span>(midpoint_x/GRID_LENGTH) 
       </div>
       <footer id="footer">
   
+  
+	<!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
   
   <div class="outer">
     <div id="footer-info" class="inner">

@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/index.html">
 <meta property="og:site_name" content="Enjoy Short Life">
 <meta property="og:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
-<meta property="og:updated_time" content="2018-06-25T01:16:27.000Z">
+<meta property="og:updated_time" content="2018-06-25T01:21:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of Byesian Theory">
 <meta name="twitter:description" content="$$X \sim  Beta(\alpha,\beta)$$$$p(x;\alpha,\beta)=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}$$Note that if \(\alpha=1 \beta=1\), Beta distribution boils down to uniform distribution. Formally">
@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunyasheng.github.io"></form>
@@ -235,14 +235,13 @@
 <h2 id="Gaussian-Process"><a href="#Gaussian-Process" class="headerlink" title="Gaussian Process"></a>Gaussian Process</h2><p>Assumption: \(f(x)\) is a random process.<br>For any given \(x\), \(f(x)\) is random variable.<br>Assumption(GP): \(f(x)\) is a Gaussian Process: let any \((x_1, x_2, …, x_n)\) be any n points in the input<br>space, for any finite n, \((f(x_1), f(x_2), …, f(x_n))\) follows a multivariate Gaussian Distribution).<br>$$E(f(x)) = m(x) $$<br>$$k(x,x’) = E((f(x)-m(x))(f(x’)-m(x’))) = cov(f(x), f(x’))$$<br>covariance function of GP f(x)</p>
 <p>Assume that $$w \sim N(0, I)$$<br>If $$f(x) = w^Tx$$ then $$f(x) \sim GP(0, x^Tx’)$$<br>If $$f(x) = w^T\Phi(x)$$ then $$f(x) \sim GP(0, \Phi(x)^T\Phi(x’))$$</p>
 <p>Training Set:<br>$$(X, Y)$$<br>Testing Set:<br>$$(X^{\star}, Y^{\star})$$<br>$$f \sim (0, k(x, x’))$$</p>
-<p>The joint distribution of the \(y\) and \(y^{\star}\) can be described as<br>$$<br>    \left[<br>        \begin{matrix}<br>            y\\<br>            y^{\star}<br>        \end{matrix}<br>    \right]<br>    \sim<br>    N(0,<br>    \left[<br>        \begin{matrix}<br>            k(x,x) &amp; k(x, x^{\star}\\<br>            k(x^{\star}, x) &amp; k(x^{\star}, x^{\star})<br>        \end{matrix}<br>    \right]<br>    )<br>$$</p>
-<p>$$<br>    p(y^{\star} \mid y) = \frac{p(y, y^{\star})}{p(y)}<br>$$<br>where the<br>$$<br>    p(y) = N(0, k(y,y))<br>$$<br>We can obtain the \(p(y^{\star}\mid y)\).<br>$$<br>    p(y^{\star}\mid y) = N(k(y^{\star}, y)k^{-1}(y,y)y, k(y^{\star}, y^{\star})- k(y,y^{\star})k^{-1}(y,y)k^{T}(y,y^{\star}))<br>$$<br>There are three typical kinds of kernel function. And the parameters in kernel function plays an important role in<br>successfully applying the GP to practical problem. So be careful to pick those parameters.</p>
-<h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank Prof. Li for his amazing lecture. </p>
+<p>The joint distribution of the \(y\) and \(y^{\star}\) can be described as </p>
+<h3 id="Acknowlegement"><a href="#Acknowlegement" class="headerlink" title="Acknowlegement"></a>Acknowlegement</h3><p>Thank <a href="http://math.sjtu.edu.cn/faculty/show.php?id=122" target="_blank" rel="noopener">Prof. Li</a> for his amazing lecture. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjitkntcl0002y5s601g016kx" class="article-share-link">Delen</a>
+      <a data-url="https://sunyasheng.github.io/2018/04/21/Byesian-Summary/" data-id="cjitku7ak0004zis6fxhxan58" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +252,7 @@
   
   
     <a href="/2018/03/18/Torch-Tutorial/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Torch_Tutorial</div>
     </a>
   
@@ -276,7 +275,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
@@ -286,7 +285,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -320,6 +319,43 @@
       </div>
       <footer id="footer">
   
+  
+	<!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
   
   <div class="outer">
     <div id="footer-info" class="inner">
